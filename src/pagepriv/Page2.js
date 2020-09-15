@@ -9,21 +9,11 @@ const SecondPage = () => {
   const auth = useContext(AuthContext)
   const message = () => {
     if (auth.isAuthenticated) {
-      return (
-      <div>Hello, neighbour!</div>
-      )
+      return <div>Hello, neighbour!</div>
     }
   }
 
-  return (
-
-    <div>
-    {message()}
-
-    </div>
-
-   
-  )
+  return <div>{message()}</div>
 }
 
 export default SecondPage

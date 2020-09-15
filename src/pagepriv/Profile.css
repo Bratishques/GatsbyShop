@@ -24,8 +24,25 @@
     padding: 20px 30px;
   }
   
+  .top-modal-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
   .playersGrid {
     margin-top: 20vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .closeModal {
+    position: relative;
+    top: 5%;
+    display: inline-block;
+
+  }
+
+  h4.modal-top {
+    margin: 0;
   }
