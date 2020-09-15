@@ -11,7 +11,6 @@ export const isBrowser = () => typeof window !== "undefined"
 const storageName = "accdata"
 
 
-const noop = () => {}
 
 
 
@@ -27,6 +26,7 @@ const GlobalContextProvider = ({ children}) => {
     const { request, error } = useHttp() 
     const [token, setToken] = useState(null)
     const [isAuthenticated,setisAuthenticated] = useState(!!data.token)
+    const [idee,setIdee] = useState(null)
    
 
 
@@ -39,6 +39,7 @@ const GlobalContextProvider = ({ children}) => {
             if (data.token) {
                 const verify = await request("/api/auth/token", "POST", "", {authorization: `Bearer ${data.token}`,})
                 if (verify.message === "valid") {
+                    setIdee(data.userId)
                     console.log(verify.message)
                 }
                 if (verify.message === "invalid") {
@@ -55,7 +56,7 @@ const GlobalContextProvider = ({ children}) => {
 
 
     return (
-      <AuthContext.Provider value={{isAuthenticated,setisAuthenticated}}>
+      <AuthContext.Provider value={{isAuthenticated,setisAuthenticated,idee,setIdee}}>
           {children}
       </AuthContext.Provider>
     )

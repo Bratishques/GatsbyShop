@@ -8,7 +8,7 @@ import { AuthContext } from "../context/AuthContext"
 const SecondPage = () => {
   const auth = useContext(AuthContext)
   const message = () => {
-    if (auth.authenticated) {
+    if (auth.isAuthenticated) {
       return (
       <div>Hello, neighbour!</div>
       )
@@ -16,13 +16,13 @@ const SecondPage = () => {
   }
 
   return (
-  <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the second page</h1>
+
+    <div>
     {message()}
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
+
+    </div>
+
+   
   )
 }
 

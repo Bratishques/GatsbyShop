@@ -7,6 +7,7 @@ export const Auth = () => {
     
     const auth = useContext(AuthContext)
     const {login,logout} = useAuth()
+    const [locked, setLocked] = useState(false)
     const {request,response, loading} = useHttp()
 
     const [form,setForm] = useState({
@@ -35,8 +36,11 @@ export const Auth = () => {
 
     const loginHandler = async () => {
         try {
+            setLocked(true)
             const data = await request("api/auth/login", "POST", {...form})
+            setLocked(false)
             login(data.token, data.userId)
+            
         } catch (e) {
             alert(e)
         }
@@ -52,17 +56,19 @@ export const Auth = () => {
                 type={"text"}
                 name={"email"}
                 onChange={changeHandler}
+
                 /></div>
                 <div className="auth_form">Password: <input
                     id="password"
                     type={"password"}
                     name={"password"}
                     onChange={changeHandler}
+ 
                 /></div>
             </div>
             <div className="auth-buttons">
-                <button onClick={loginHandler}>Войти</button>
-                <button onClick={registerHandler}>Регистрация</button>
+                <button onClick={loginHandler} disabled = {locked}>Login</button>
+                <button onClick={registerHandler} disabled = {locked}>Register</button>
             </div>
         </div>
     )

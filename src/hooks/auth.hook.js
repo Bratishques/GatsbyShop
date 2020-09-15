@@ -18,6 +18,7 @@ export const useAuth = () => {
       })
     )
     auth.setisAuthenticated(true)
+    auth.setIdee(id)
     console.log(auth.isAuthenticated)
   }, [])
 
@@ -26,6 +27,7 @@ export const useAuth = () => {
     setUserId(null)
     localStorage.removeItem(storageName)
     auth.setisAuthenticated(false)
+    auth.setIdee(null)
     console.log(auth.isAuthenticated)
   }, [])
 
