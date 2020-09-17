@@ -46,3 +46,17 @@
   h4.modal-top {
     margin: 0;
   }
+
+  .user-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 10%;
+    object-fit: scale-down;
+    margin-bottom: 0;
+  }
+
+  .user-image-wrap {
+    padding: 10px 10px;
+    background-color: gray;
+    width: 120px;
+  }

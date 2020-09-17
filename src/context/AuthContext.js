@@ -26,7 +26,8 @@ const GlobalContextProvider = ({ children}) => {
     const { request, error } = useHttp() 
     const [token, setToken] = useState(null)
     const [isAuthenticated,setisAuthenticated] = useState(!!data.token)
-    const [idee,setIdee] = useState(null)
+    const [idee, setIdee] = useState(null)
+    const [admin, setAdmin] = useState(false)
    
 
 
@@ -40,6 +41,11 @@ const GlobalContextProvider = ({ children}) => {
                 const verify = await request("/api/auth/token", "POST", "", {authorization: `Bearer ${data.token}`,})
                 if (verify.message === "valid") {
                     setIdee(data.userId)
+                    console.log(verify.message)
+                }
+                if (verify.message === "valid admin") {
+                    setIdee(data.userId)
+                    setAdmin(true)
                     console.log(verify.message)
                 }
                 if (verify.message === "invalid") {
@@ -56,7 +62,7 @@ const GlobalContextProvider = ({ children}) => {
 
 
     return (
-      <AuthContext.Provider value={{isAuthenticated,setisAuthenticated,idee,setIdee}}>
+      <AuthContext.Provider value={{isAuthenticated,setisAuthenticated,idee,setIdee,admin,setAdmin}}>
           {children}
       </AuthContext.Provider>
     )

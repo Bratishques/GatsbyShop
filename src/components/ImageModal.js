@@ -30,6 +30,7 @@ export const ImageModal = props => {
     const response = await fetch(`/api/profile/setimg/${idee}`, {method: "POST", body: data}, )
     const respData = await response.json()
     console.log(respData)
+    window.location.reload()
   }
 
   if (isUploading) {

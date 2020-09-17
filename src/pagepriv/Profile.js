@@ -36,14 +36,19 @@ export const Profile = props => {
     return <div>{error}</div>
   }
   return (
+    <>
     <div>
       <ImageModal
         isUploading={isUploading}
         setIsUploading={setIsUploading}
       ></ImageModal>
-      {profileData.email}
-      <button onClick={uploadHandler}>Upload image!</button>
+      <div className = "user-image-wrap">
+      <img src={profileData.imageUrl} alt="Your Avatar" className = {`user-image`}/>
+      </div>
+      Your email is: {profileData.email}
     </div>
+    <button onClick={uploadHandler}>Upload image!</button>
+    </>
   )
 }
 
