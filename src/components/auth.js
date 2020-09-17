@@ -39,7 +39,7 @@ export const Auth = () => {
             setLocked(true)
             const data = await request("api/auth/login", "POST", {...form})
             setLocked(false)
-            login(data.token, data.userId)
+            login(data.token, data.userId, data.admin)
             
         } catch (e) {
             alert(e)

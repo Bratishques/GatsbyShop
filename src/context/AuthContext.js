@@ -38,7 +38,8 @@ const GlobalContextProvider = ({ children}) => {
 
         async function callVerify() {
             if (data.token) {
-                const verify = await request("/api/auth/token", "POST", "", {authorization: `Bearer ${data.token}`,})
+                console.log(data.userId)
+                const verify = await request("/api/auth/token", "POST", "", {authorization: `Bearer ${data.token}`, userId: data.userId})
                 if (verify.message === "valid") {
                     setIdee(data.userId)
                     console.log(verify.message)

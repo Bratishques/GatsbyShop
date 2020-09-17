@@ -1,8 +1,5 @@
 import React, { useContext } from "react"
-import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
 import { AuthContext } from "../context/AuthContext"
 
 const SecondPage = () => {

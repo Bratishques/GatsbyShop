@@ -8,23 +8,23 @@ import "./header.css"
 import CartCount from "./cartCount"
 
 const Header = ({ siteTitle }) => {
-  const {logout} = useAuth()
+  const { logout } = useAuth()
   const auth = useContext(AuthContext)
-  
+
   const logoutHandler = () => {
     logout()
   }
 
   const loggedNav = () => {
     return (
-      <ul className = "nav-wrap">
+      <ul className="nav-wrap">
         <StyledLink to="/app/page2">
-        <CartCount></CartCount>
+         <CartCount></CartCount>
         </StyledLink>
         <StyledLink to="/Categories">Categories</StyledLink>
         <StyledLink to="/browse">Browse</StyledLink>
         <StyledLink to={`/app/profile/${auth.idee}`}>Profile</StyledLink>
-        
+        {auth.admin && <StyledLink to={`/admin/main`}>Admin Panel</StyledLink>}
         <button onClick={logoutHandler}>Logout</button>
       </ul>
     )
@@ -32,33 +32,32 @@ const Header = ({ siteTitle }) => {
 
   const unloggedNav = () => {
     return (
-      <ul className = "nav-wrap">
-      <StyledLink to="/app/page2">Login</StyledLink>
-      <StyledLink to="/app/page2">
-      <CartCount></CartCount>
-      </StyledLink>
-      <StyledLink to="/browse">Browse</StyledLink>
-      <StyledLink to="/Categories">Categories</StyledLink>
-      <StyledLink to="/app/page2">Verify account</StyledLink>
-    </ul>
+      <ul className="nav-wrap">
+        <StyledLink to="/app/page2">Login</StyledLink>
+        <StyledLink to="/app/page2">
+          <CartCount></CartCount>
+        </StyledLink>
+        <StyledLink to="/browse">Browse</StyledLink>
+        <StyledLink to="/Categories">Categories</StyledLink>
+        <StyledLink to="/app/page2">Verify account</StyledLink>
+      </ul>
     )
   }
 
-
-return(
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
+  return (
+    <header
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        background: `rebeccapurple`,
+        marginBottom: `1.45rem`,
       }}
     >
+      <div
+        style={{
+          margin: `0 auto`,
+          maxWidth: 960,
+          padding: `1.45rem 1.0875rem`,
+        }}
+      >
         <Link
           to="/"
           style={{
@@ -69,9 +68,9 @@ return(
         >
           {siteTitle}
         </Link>
-      {auth.isAuthenticated ? loggedNav() : unloggedNav()}
-    </div>
-  </header>
+        {auth.isAuthenticated ? loggedNav() : unloggedNav()}
+      </div>
+    </header>
   )
 }
 

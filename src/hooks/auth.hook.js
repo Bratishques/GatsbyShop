@@ -7,7 +7,7 @@ export const useAuth = () => {
   const [userId, setUserId] = useState(null)
   const auth = useContext(AuthContext)
 
-  const login = useCallback((jwtToken, id) => {
+  const login = useCallback((jwtToken, id, admin) => {
     setToken(jwtToken)
     setUserId(id)
     localStorage.setItem(
@@ -19,7 +19,10 @@ export const useAuth = () => {
     )
     auth.setisAuthenticated(true)
     auth.setIdee(id)
-    console.log(auth.isAuthenticated)
+    if (admin) {
+      console.log(admin)
+      auth.setAdmin(true)
+    }
   }, [])
 
   const logout = useCallback(() => {
@@ -29,7 +32,6 @@ export const useAuth = () => {
     auth.setisAuthenticated(false)
     auth.setIdee(null)
     auth.setAdmin(false)
-    console.log(auth.isAuthenticated)
   }, [])
 
   useEffect(() => {
