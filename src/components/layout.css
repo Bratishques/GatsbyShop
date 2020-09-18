@@ -602,6 +602,9 @@ pre code {
   background: none;
   line-height: 1.42;
 }
+textarea {
+  resize: none;
+}
 code:before,
 code:after,
 tt:before,

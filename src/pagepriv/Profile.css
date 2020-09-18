@@ -16,7 +16,7 @@
   }
   .modal-container {
     background: #fff;
-    width: 450px;
+    width: 80vw;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
@@ -29,11 +29,6 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-  }
-  .playersGrid {
-    margin-top: 20vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .closeModal {
@@ -60,3 +55,4 @@
     background-color: gray;
     width: 120px;
   }
+
