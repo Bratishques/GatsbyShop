@@ -20,16 +20,7 @@
 
 .data {
   grid-area: data;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 3fr 1fr 1fr 1fr;
-  gap: 30px;
-  grid-template-areas:
-    "input-name"
-    "input-description"
-    "input-category"
-    "input-price"
-    "input-in-stock";
+
 }
 
 .input-name {
@@ -39,6 +30,7 @@
 
 .input-description {
   grid-area: input-description;
+  min-height: 150px;
 
 }
 
@@ -64,6 +56,7 @@
     grid-template-columns: 100px 1fr;
     grid-template-rows: 1fr;
     gap: 20px;
+    padding: 10px 0;
 }
 
 input[type="file"] {
@@ -71,7 +64,8 @@ input[type="file"] {
 }
 
 input[type=text] { 
-    text-align:left
+    width: 100%;
+    padding-left: 5px;
 }
  
 
@@ -111,13 +105,14 @@ input[type=text] {
 }
 
 .category-dropped {
+  position: relative;
   width: 100%;
   background-color: none;
   border: none;
   text-align: left;
   background-color: whitesmoke;
   padding: 5px 10px;
-
+  z-index: 20;
   display: block;
 
 
@@ -127,3 +122,20 @@ input[type=text] {
   background-color: thistle;
 }
 
+.input-error {
+  margin-top: 8px;
+  color: red;
+  z-index: 1;
+}
+
+.img-input-blank {
+    width: 250px;
+    height: 250px;
+    background-color: rgb(219, 219, 219);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    padding: 10px;
+}

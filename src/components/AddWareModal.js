@@ -1,38 +1,67 @@
 import React, { useState, useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
+import AddWareImage from "./AddWareImage"
 import AddWareInput from "./AddWareInput"
 import CategoryInput from "./CategoryInput"
 
 export const AddWareModal = props => {
   const { idee } = useContext(AuthContext)
-  const [file, setFile] = useState(null)
+  const [file, setFile] = useState({
+    image: false,
+    preview: false,
+  })
   const { isAdding, setIsAdding } = props
   const [form, setForm] = useState({
-      Name: "",
-      Description: "",
-      Category: "Category is not selected",
-      Price: "",
-      "In Stock": "",
+    Name: {
+      value: "",
+      isValid: false,
+    },
+    Description: {
+      value: "",
+      isValid: false,
+    },
+    Category: {
+      value: "No category selected",
+      isValid: false,
+    },
+    Price: {
+      value: "",
+      isValid: false,
+    },
+    "In Stock": {
+      value: "",
+      isValid: false,
+    },
   })
+
   const closeWindow = () => {
     setIsAdding(!isAdding)
-    setFile(null)
+    setFile({
+      image: false,
+      preview: false,
+    })
   }
   const changeFile = event => {
-    setFile(null)
+    setFile({
+      image: false,
+      preview: false,
+    })
     const candidate = event.target.files[0]
     if (candidate) {
       if (
         candidate.size <= 2 * 1024 * 1024 &&
         (candidate.type === "image/png" || candidate.type === "image/jpeg")
       ) {
-        setFile(event.target.files[0])
+        setFile({
+          image: event.target.files[0],
+          preview: URL.createObjectURL(event.target.files[0]),
+        })
       }
     }
   }
   const uploadFile = async () => {
     const data = new FormData()
-    data.append("file", file, file.name)
+    data.append("file", file.image, file.image.name)
     data.append("id", idee)
     console.log(data)
     setFile(null)
@@ -58,25 +87,44 @@ export const AddWareModal = props => {
             </div>
             <div className={`input-grid`}>
               <div class="img">
-                <div className = "input-img">
-                <label class="file-label" for="file">
-                    Yess
-                </label>
-                <input type="file" onChange={changeFile} id = "file"/>
-                </div>
-                <div className = {`input-send`}>
-                <button disabled={!file} onClick={uploadFile}>
-                  Send Data
-                </button>
+                <AddWareImage changeFile={changeFile} wareImg={file} />
+                <div className={`input-send`}>
+                  <button disabled={!file.image} onClick={uploadFile}>
+                    Send Data
+                  </button>
                 </div>
               </div>
               <div class="data">
-              <AddWareInput className = {"input-name"} inputName = {`Name`} form = {form} setForm = {setForm}/>
-              <AddWareInput className = {"input-description"} inputName = {`Description`} form = {form} setForm = {setForm}/>
-              <CategoryInput className = {"input-category"} inputName = {`Category`} form = {form} setForm = {setForm}/>
-              <AddWareInput className = {"input-price"} inputName = {`Price`} form = {form} setForm = {setForm}/>
-              <AddWareInput className = {"input-in-stock"} inputName = {`In Stock`} form = {form} setForm = {setForm} />
-              
+                <AddWareInput
+                  className={"input-name"}
+                  inputName={`Name`}
+                  form={form}
+                  setForm={setForm}
+                />
+                <AddWareInput
+                  className={"input-description"}
+                  inputName={`Description`}
+                  form={form}
+                  setForm={setForm}
+                />
+                <CategoryInput
+                  className={"input-category"}
+                  inputName={`Category`}
+                  form={form}
+                  setForm={setForm}
+                />
+                <AddWareInput
+                  className={"input-price"}
+                  inputName={`Price`}
+                  form={form}
+                  setForm={setForm}
+                />
+                <AddWareInput
+                  className={"input-in-stock"}
+                  inputName={`In Stock`}
+                  form={form}
+                  setForm={setForm}
+                />
               </div>
             </div>
           </div>

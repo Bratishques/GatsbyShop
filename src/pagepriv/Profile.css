@@ -22,6 +22,7 @@
     transition: all 0.3s ease;
     margin: 0 auto;
     padding: 20px 30px;
+    padding-bottom: 60px;
   }
   
   .top-modal-container {

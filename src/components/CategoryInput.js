@@ -9,7 +9,10 @@ const CategoryInput = props => {
   
   const changeForm = (e) => {
     setForm({...form, 
-        [inputName]:e.target.value
+        [inputName]:{
+          value: e.target.value,
+          isValid: true
+        }
     })
   }
   const dropHandler = () => {
@@ -35,10 +38,12 @@ const CategoryInput = props => {
         <div className="category-flex">
         <div className = "category-dropdown-wrap" onClick={dropHandler}>
           <div className = "category-dropdown" >
-          <div className="category-select">{form[inputName]}</div>
+          <div className="category-select">{form[inputName]["value"]}</div>
           {isVisible && 
           <div>
 
+          <DroppedCategory catName={`Ya Eblan`} changeForm={changeForm}/>
+          <DroppedCategory catName={`Ya Ne Eblan`} changeForm={changeForm}/>
           <DroppedCategory catName={`Ya Eblan`} changeForm={changeForm}/>
           <DroppedCategory catName={`Ya Ne Eblan`} changeForm={changeForm}/>
           </div>

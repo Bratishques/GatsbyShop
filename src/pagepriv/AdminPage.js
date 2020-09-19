@@ -20,14 +20,20 @@ const AdminPage = () => {
       <br />
       <br />
       <div className="admin-buttons">
-        <button>
-          <AdminLink to={`/admin/wares`}>Change the displayed wares</AdminLink>
-        </button>
-        <button>
-          <AdminLink to={`/admin/users`}>
-            Promote, delete and change users
+        
+          <AdminLink to={`/admin/wares`}>
+          <button>
+          Change the displayed wares
+          </button>
           </AdminLink>
-        </button>
+
+        
+          <AdminLink to={`/admin/users`}>
+          <button>
+            Promote, delete and change users
+            </button>
+          </AdminLink>
+
       </div>
     </div>
   )
