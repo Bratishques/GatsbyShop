@@ -34,6 +34,23 @@ export const AddWareModal = props => {
     },
   })
 
+  const addWareFormValid = (file, form) => {
+    const formValid = (form, file) => {
+      for (let prop in form) {
+        if (!form[prop].isValid) return false
+      }
+      if (file.image === false) {
+        return false
+      }
+      return true
+    }
+    if (!formValid(form,file)) {
+      return true
+    }
+    else return false
+
+  }
+
   const closeWindow = () => {
     setIsAdding(!isAdding)
     setFile({
@@ -89,7 +106,7 @@ export const AddWareModal = props => {
               <div class="img">
                 <AddWareImage changeFile={changeFile} wareImg={file} />
                 <div className={`input-send`}>
-                  <button disabled={!file.image} onClick={uploadFile}>
+                  <button disabled={addWareFormValid(file,form)} onClick={uploadFile}>
                     Send Data
                   </button>
                 </div>
