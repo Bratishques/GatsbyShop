@@ -44,8 +44,10 @@ export const ImageModal = props => {
                 Close
               </button>
             </div>
-
-            <input type="file" id="name" onChange={changeFile} />
+            <label class="file-label" for="name">
+              Select file
+              </label>
+            <input type="file" id="name" onChange={changeFile}/>
             <button disabled = {!file} onClick = {uploadFile}>Send File!</button>
           </div>
         </div>

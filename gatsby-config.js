@@ -1,3 +1,12 @@
+
+  const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+  console.log(`Using environment config: '${process.env.NODE_ENV}'`)
+  require("dotenv").config({
+    path: `.env.${activeEnv}`,
+  })
+
+  process.env.ENABLE_GATSBY_REFRESH_ENDPOINT=true
+  
 module.exports = {
   siteMetadata: {
     title: `My example app`,
@@ -6,7 +15,7 @@ module.exports = {
   },
   proxy: {
     prefix: "/api",
-    url:"http://localhost:5000"
+    url: "http://localhost:5000",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -33,7 +42,16 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [ `/admin/*`, `/app/*`] },
+      options: { prefixes: [`/admin/*`, `/app/*`] },
+    },
+    {
+      resolve: `gatsby-source-mongodb`,
+      options: {
+        connectionString:
+          "mongodb+srv://Bratishques:812951476@cluster0-xpfff.mongodb.net/GatsbyShop?retryWrites=true&w=majority",
+        dbName: `GatsbyShop`,
+        collection: [`categories`,],
+      },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

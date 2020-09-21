@@ -1,11 +1,35 @@
 import React, { useEffect, useState } from "react"
+import AddCategoryButton from "./AddCategoryButton"
+import AddCategoryFetcher from "./AddCategoryFetcher"
 import DroppedCategory from "./DroppedCategory"
+import config from "../config"
+import { useStaticQuery, graphql } from 'gatsby'
+const {baseUrl} = config
 
-const CategoryInput = props => {
+
+
+
+const CategoryInput = (props) => {
+  console.log(process.env.ENABLE_GATSBY_REFRESH_ENDPOINT)
   const { className, inputName, form, setForm } = props
   const [isVisible, setIsVisible] = useState(false)
   const [loading, setLoading] = useState(false)
   const [catArr, setCatArr] = useState([])
+  const [categoryAdder, setCategoryAdder] = useState(false)
+
+  const data = useStaticQuery(graphql`
+    query MyQuery {
+      allMongodbGatsbyShopCategories(sort: { fields: name }) {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+  `)
+
+  console.log(data.allMongodbGatsbyShopCategories.edges)
   
   const changeForm = (e) => {
     setForm({...form, 
@@ -16,43 +40,53 @@ const CategoryInput = props => {
     })
   }
   const dropHandler = () => {
+
       setIsVisible(!isVisible)
+  
   }
-
-  useEffect(() => {
-      const getCategories = async () => {
-        setLoading(true)
-        const data = await fetch("/api/categories/list", {method: "GET"})
-        const cats = await data.json()
-        setCatArr(cats)
-        setLoading(false)
-      }
-
-  }, [isVisible])
+  
 
   if (inputName === "Category") {
     return (
-
       <div className={`${className}`}>
         {inputName}
         <div className="category-flex">
-        <div className = "category-dropdown-wrap" onClick={dropHandler}>
-          <div className = "category-dropdown" >
-          <div className="category-select">{form[inputName]["value"]}</div>
-          {isVisible && 
-          <div>
+          <div className="category-dropdown-wrap" onClick={dropHandler}>
+            <div className="category-dropdown">
+              <div className="category-select">{form[inputName]["value"]}</div>
+              {isVisible && loading && (
+                <div>
+                 ...loading
+                </div>
+              )}
 
-          <DroppedCategory catName={`Ya Eblan`} changeForm={changeForm}/>
-          <DroppedCategory catName={`Ya Ne Eblan`} changeForm={changeForm}/>
-          <DroppedCategory catName={`Ya Eblan`} changeForm={changeForm}/>
-          <DroppedCategory catName={`Ya Ne Eblan`} changeForm={changeForm}/>
+              {isVisible && !loading && (
+                <div>
+                  {data.allMongodbGatsbyShopCategories.edges.map((a, index) => {
+                    return (
+                      <DroppedCategory
+                        catName={`${a.node.name}`}
+                        changeForm={changeForm}
+                      />
+                    )
+                  })}
+                </div>
+              )}
+            </div>
           </div>
 
-          }
-          </div>
-          </div>
-          <button>+</button>
+          <AddCategoryButton
+            categoryAdder={categoryAdder}
+            setCategoryAdder={setCategoryAdder}
+          />
         </div>
+        {categoryAdder && <div>Add new</div>}
+        {categoryAdder && (
+          <AddCategoryFetcher
+            categoryAdder={categoryAdder}
+            setCategoryAdder={setCategoryAdder}
+          />
+        )}
       </div>
     )
   }

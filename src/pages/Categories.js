@@ -2,8 +2,23 @@ import React, { useState, useEffect } from "react"
 import {useHttp} from "../hooks/http.hook"
 import Ware from "../components/ware"
 import Layout from "../components/layout"
+import { useStaticQuery, graphql } from "gatsby"
+
 
 const Categories = () => {
+
+  
+const data = useStaticQuery(graphql`
+query catQuery {
+  allMongodbGatsbyShopCategories(sort: { fields: name }) {
+    edges {
+      node {
+        name
+      }
+    }
+  }
+}
+`)
     const [options, setOptions] = useState([])
    const [flag, setFlag] = useState(true)
    const [list, setList] = useState([])
@@ -53,28 +68,14 @@ const Categories = () => {
       <Layout>
   <form>
   <div className="radio">
-    <label>
-      <input type="checkbox" value="category1" onChange = {changeHandler}/>
-      cat 1
+  {data.allMongodbGatsbyShopCategories.edges.map(a => {
+    return (
+      <label>
+      <input type="checkbox" value={`${a.node.name}`} onChange = {changeHandler}/>
+      {a.node.name}
     </label>
-  </div>
-  <div className="radio">
-    <label>
-      <input type="checkbox" value="category2" onChange = {changeHandler}/>
-      cat 2
-    </label>
-  </div>
-  <div className="radio">
-    <label>
-      <input type="checkbox" value="category3" onChange = {changeHandler}/>
-      cat 3
-    </label>
-  </div>
-  <div className="radio">
-    <label>
-      <input type="checkbox" value="category4" onChange = {changeHandler}/>
-      cat 4
-    </label>
+    )
+  })}
   </div>
 </form>
 {mapList()}
