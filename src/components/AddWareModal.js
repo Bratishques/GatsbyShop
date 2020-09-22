@@ -6,12 +6,7 @@ import CategoryInput from "./CategoryInput"
 
 export const AddWareModal = props => {
   const { idee } = useContext(AuthContext)
-  const [file, setFile] = useState({
-    image: false,
-    preview: false,
-  })
-  const { isAdding, setIsAdding } = props
-  const [form, setForm] = useState({
+  const defForm = {
     Name: {
       value: "",
       isValid: false,
@@ -32,7 +27,13 @@ export const AddWareModal = props => {
       value: "",
       isValid: false,
     },
+  }
+  const [file, setFile] = useState({
+    image: false,
+    preview: false,
   })
+  const { isAdding, setIsAdding } = props
+  const [form, setForm] = useState(defForm)
 
   const addWareFormValid = (file, form) => {
     const formValid = (form, file) => {
@@ -59,10 +60,7 @@ export const AddWareModal = props => {
     })
   }
   const changeFile = event => {
-    setFile({
-      image: false,
-      preview: false,
-    })
+
     const candidate = event.target.files[0]
     if (candidate) {
       if (
@@ -78,17 +76,31 @@ export const AddWareModal = props => {
   }
   const uploadFile = async () => {
     const data = new FormData()
-    data.append("file", file.image, file.image.name)
-    data.append("id", idee)
-    console.log(data)
-    setFile(null)
-    const response = await fetch(`/api/profile/setimg/${idee}`, {
-      method: "POST",
-      body: data,
+    const {Name, Description, Category, Price} = form
+    const inStock = form["In Stock"]
+    data.append("file", file.image, Name["value"])
+    console.log(Name, Description, Category, Price, inStock)
+    for (let key in form) {
+      console.log(key)
+      data.append(key, form[key]["value"])
+    }
+     setFile({
+      image: false,
+      preview: false,
     })
+    console.log(data)
+    const response = await fetch(`/api/products/add/`, {
+    method: "POST",
+    body: data,
+     })
     const respData = await response.json()
     console.log(respData)
-    window.location.reload()
+    setFile({
+      image: false,
+      preview: false,
+    })
+    setForm(defForm)
+    //window.location.reload()
   }
 
   if (isAdding) {
