@@ -48,8 +48,9 @@ module.exports = {
       resolve: `gatsby-source-mongodb`,
       options: {
         connectionString:
-          "mongodb+srv://Bratishques:812951476@cluster0-xpfff.mongodb.net/GatsbyShop?retryWrites=true&w=majority",
+          process.env.MONGO_ACCESS_LINK,
         dbName: `GatsbyShop`,
+        preserveObjectIds: true,
         collection: [`categories`, `products`],
       },
     },

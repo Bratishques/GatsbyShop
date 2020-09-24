@@ -2,37 +2,61 @@ import React, { useState, useContext } from "react"
 import AddWareImage from "./AddWareImage"
 import AddWareInput from "./AddWareInput"
 import CategoryInput from "./CategoryInput"
+import { useStaticQuery, graphql } from "gatsby"
 
 export const UpdateWareModal = props => {
+  const { name, image, price, inStock , description, isUpdating, setIsUpdating, category} = props
+
+  const data = useStaticQuery(graphql`
+    query($category: String){
+      allMongodbGatsbyShopCategories(filter: {mongodb_id: {eq: $category}}) {
+        nodes {
+          name
+          mongodb_id
+        }
+      }
+    }
+  `)
+
+
+  const filterCategory = (categories) => {
+    for (let categoryData of categories) {
+        if (categoryData.mongodb_id === category) {
+            return categoryData.name
+        }
+    }
+  }
+
+  const categoryName = filterCategory(data.allMongodbGatsbyShopCategories.nodes)
+  console.log(categoryName)
 
   const defForm = {
     Name: {
-      value: "",
-      isValid: false,
+      value: name,
+      isValid: true,
     },
     Description: {
-      value: "",
-      isValid: false,
+      value: description,
+      isValid: true,
     },
     Category: {
-      value: "No category selected",
-      isValid: false,
+      value: categoryName,
+      isValid: true,
     },
     Price: {
-      value: "",
-      isValid: false,
+      value: price,
+      isValid: true,
     },
     "In Stock": {
-      value: "",
-      isValid: false,
+      value: inStock,
+      isValid: true,
     },
   }
   const [file, setFile] = useState({
     image: false,
-    preview: false,
+    preview: image,
   })
-  const [loading, setLoading] = useState(false)
-  const { isAdding, setIsAdding } = props
+
   const [form, setForm] = useState(defForm)
 
   const addWareFormValid = (file, form) => {
@@ -51,10 +75,11 @@ export const UpdateWareModal = props => {
   }
 
   const closeWindow = () => {
-    setIsAdding(!isAdding)
+    setIsUpdating(!isUpdating)
+    setForm(defForm)
     setFile({
       image: false,
-      preview: false,
+      preview: image,
     })
   }
   const changeFile = event => {
@@ -73,34 +98,35 @@ export const UpdateWareModal = props => {
   }
   const uploadFile = async () => {
     const data = new FormData()
-    const { Name, Description, Category, Price } = form
-    const inStock = form["In Stock"]
+    const { Name} = form
+
+    if (file.image) {
     data.append("file", file.image, Name["value"])
-    console.log(Name, Description, Category, Price, inStock)
+   }
+
     for (let key in form) {
-      console.log(key)
       data.append(key, form[key]["value"])
     }
     setFile({
       image: false,
-      preview: false,
+      preview: image,
     })
     console.log(data)
-    const response = await fetch(`/api/products/add/`, {
+    const response = await fetch(`/api/products/update/`, {
       method: "POST",
       body: data,
     })
     const respData = await response.json()
     console.log(respData)
+    await fetch(`http://localhost:8000/__refresh`, {method: "POST"})
+    setForm(defForm)
     setFile({
       image: false,
-      preview: false,
+      preview: image,
     })
-    setForm(defForm)
-    const update = await fetch(`http://localhost:8000/__refresh`, {method: "POST"})
   }
 
-  if (isAdding) {
+  if (isUpdating) {
     return (
       <div className="modal">
         <div className="modal-wrapper">

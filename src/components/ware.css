@@ -1,7 +1,8 @@
 .wareImage {
     width: 300px;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
+    margin: 0;
 }
 
 .ware {
@@ -9,11 +10,9 @@
 }
 
 .price {
-    position: relative;
     padding: 15px 15px;
     background-color: #9FFF24;
     color: #484848 ;
-    margin-top: -88px;
     width: 150px;
     font-size: 28px;
 }

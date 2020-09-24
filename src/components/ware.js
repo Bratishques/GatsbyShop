@@ -56,7 +56,6 @@ const Ware = ({total, addItem, a, cart, increaseAmount, decreaseAmount}) => {
         <div>{a.name}
         {wareButton()}
         </div>
-        <br/>
         </div>
     )
 }
