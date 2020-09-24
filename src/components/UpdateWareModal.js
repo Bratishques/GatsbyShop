@@ -1,11 +1,10 @@
 import React, { useState, useContext } from "react"
-import { AuthContext } from "../context/AuthContext"
 import AddWareImage from "./AddWareImage"
 import AddWareInput from "./AddWareInput"
 import CategoryInput from "./CategoryInput"
 
-export const AddWareModal = props => {
-  const { idee } = useContext(AuthContext)
+export const UpdateWareModal = props => {
+
   const defForm = {
     Name: {
       value: "",

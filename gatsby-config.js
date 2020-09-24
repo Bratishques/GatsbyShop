@@ -50,7 +50,7 @@ module.exports = {
         connectionString:
           "mongodb+srv://Bratishques:812951476@cluster0-xpfff.mongodb.net/GatsbyShop?retryWrites=true&w=majority",
         dbName: `GatsbyShop`,
-        collection: [`categories`,],
+        collection: [`categories`, `products`],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
