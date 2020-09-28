@@ -20,7 +20,6 @@ query catQuery {
 }
 `)
     const [options, setOptions] = useState([])
-   const [flag, setFlag] = useState(true)
    const [list, setList] = useState([])
    const {request} = useHttp()
 

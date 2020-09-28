@@ -1,11 +1,9 @@
-import React, { useState, useContext } from "react"
-import { AuthContext } from "../context/AuthContext"
+import React, { useState} from "react"
 import AddWareImage from "./AddWareImage"
 import AddWareInput from "./AddWareInput"
 import CategoryInput from "./CategoryInput"
 
 export const AddWareModal = props => {
-  const { idee } = useContext(AuthContext)
   const defForm = {
     Name: {
       value: "",
@@ -32,8 +30,7 @@ export const AddWareModal = props => {
     image: false,
     preview: false,
   })
-  const [loading, setLoading] = useState(false)
-  const { isAdding, setIsAdding } = props
+  const { isAdding, setIsAdding, wares, setWares } = props
   const [form, setForm] = useState(defForm)
 
   const addWareFormValid = (file, form) => {
@@ -93,12 +90,12 @@ export const AddWareModal = props => {
     })
     const respData = await response.json()
     console.log(respData)
+    setWares([...wares, respData._doc])
     setFile({
       image: false,
       preview: false,
     })
     setForm(defForm)
-    const update = await fetch(`http://localhost:8000/__refresh`, {method: "POST"})
   }
 
   if (isAdding) {

@@ -8,9 +8,10 @@ export const UpdateWareModal = props => {
   const { name, image, price, inStock , description, isUpdating, setIsUpdating, category} = props
   const [loading, setLoading] = useState(false)
 
+
   const data = useStaticQuery(graphql`
-    query($category: String){
-      allMongodbGatsbyShopCategories(filter: {mongodb_id: {eq: $category}}) {
+    query{
+      allMongodbGatsbyShopCategories {
         nodes {
           name
           mongodb_id

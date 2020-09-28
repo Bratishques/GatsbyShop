@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from "react"
-import Layout from "../components/layout"
+import React, { useState, useEffect } from "react"
 import { useHttp } from "../hooks/http.hook"
 
 export const ItemPage = props => {

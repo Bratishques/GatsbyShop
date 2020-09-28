@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react"
-import { Link, navigate } from "gatsby"
+import React, { useEffect, useContext } from "react"
+import { navigate } from "gatsby"
 import {Auth} from "../components/auth"
 import Layout from "../components/layout"
 

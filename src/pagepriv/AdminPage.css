@@ -82,6 +82,10 @@ input[type=text] {
     column-gap: 20px;
 }
 
+.dropdown {
+  max-height: 200px;
+  overflow-y: scroll;
+}
 .category-dropdown-wrap {
   position: relative;
   background-color: whitesmoke;

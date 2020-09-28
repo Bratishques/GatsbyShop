@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import { connect } from "react-redux"
 import "./ware.css"
@@ -48,7 +48,7 @@ const Ware = ({total, addItem, a, cart, increaseAmount, decreaseAmount}) => {
 
             }
         }>
-        <img className = "wareImage" src={a.image}/>
+        <img className = "wareImage" src={a.image} alt={a.name}/>
         <div className = "price">{a.price}</div>
         
         

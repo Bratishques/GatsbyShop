@@ -1,8 +1,5 @@
 import React, { createContext, useState, useEffect } from "react"
 import { useHttp } from "../hooks/http.hook"
-import { Location } from "@reach/router"
-import { useAuth } from "../hooks/auth.hook"
-
 export const AuthContext = createContext()
 export const isBrowser = () => typeof window !== "undefined"
 
@@ -15,7 +12,6 @@ const GlobalContextProvider = ({ children }) => {
     } else return false
   })()
   const { request, error } = useHttp()
-  const [token, setToken] = useState(null)
   const [isAuthenticated, setisAuthenticated] = useState(!!data.token)
   const [idee, setIdee] = useState(null)
   const [admin, setAdmin] = useState(false)

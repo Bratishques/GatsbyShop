@@ -6,9 +6,9 @@ import { useAuth } from "../hooks/auth.hook"
 export const Auth = () => {
     
     const auth = useContext(AuthContext)
-    const {login,logout} = useAuth()
+    const {login} = useAuth()
     const [locked, setLocked] = useState(false)
-    const {request,response, loading} = useHttp()
+    const {request} = useHttp()
 
     const [form,setForm] = useState({
         email:"", password:""

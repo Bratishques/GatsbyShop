@@ -1,48 +1,68 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./Profile.css"
 import "./AdminPage.css"
 import {AddWareModal} from "../components/AddWareModal"
-import { useStaticQuery, graphql } from "gatsby"
 import AdminWare from "../components/AdminWare"
+import Observer from '@researchgate/react-intersection-observer';
+import { useHttp } from "../hooks/http.hook"
 
 const AdminWares = () => {
-    const data = useStaticQuery(graphql`
-    {
-      allMongodbGatsbyShopProducts {
-        nodes {
-          image
-          category
-          description
-          name
-          price
-          inStock
-        }
-      }
-    }
-  `)
-  
-  console.log(data.allMongodbGatsbyShopProducts.nodes)
-
-
+    const [currentPage, setCurrentPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(1)
+    const [wares,setWares] = useState([])
+    const {request, loading} = useHttp()
     const [isAdding, setIsAdding] = useState(false)
+    const [intersecting, setIntersecting] = useState(false)
 
     const addNewItem = () => {
         setIsAdding(!isAdding)
     }
 
+    const handleIntersection = (event) => {
+      if (!loading) {
+      setIntersecting(!intersecting)
+      console.log("yes")
+      }
+      if (intersecting && currentPage < totalPages) {
+          setCurrentPage(currentPage + 1)
+      }
+    }
+
+  const options = {
+      onChange: handleIntersection,
+      root: null,
+      threshold: 1
+    };
+
+    useEffect( () => {
+      async function callList() {
+      let list = await request(`/api/list/?page=${currentPage}`, "PUT")
+      setTotalPages(list.totalPages)
+      setWares(wares.concat(list.list))           
+  }
+  if (currentPage > 0) {
+  callList()
+  }
+
+  
+  },[currentPage])
+
     return (
         <div>
-            <AddWareModal isAdding = {isAdding} setIsAdding = {setIsAdding} />
+            <AddWareModal isAdding = {isAdding} setIsAdding = {setIsAdding} wares = {wares} setWares = {setWares}/>
             <button onClick={addNewItem}>
                 Add a new Item ++
             </button>
             <br/>
             Browse and Modify
             <div className="admin-wares-grid">
-                {data.allMongodbGatsbyShopProducts.nodes.map(a => {
-                    return <AdminWare {...a}/>
+                {wares.map(a => {
+                    return <AdminWare {...a} wares = {wares} setWares = {setWares}/>
                 })}
             </div>
+            <Observer {...options}>
+            <div >IF YOU SEE ME THIS MUST LOAD MORE SHIT HONEY</div>
+          </Observer>
         </div>
     )
 }

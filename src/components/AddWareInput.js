@@ -13,7 +13,6 @@ const AddWareInput = props => {
   })
 
   const checkValidity = event => {
-    const textReg = /([0-9])\w+/gi
     const floatReg = /^[1-9]{1}\d*\.\d{2}$/gi
     const intReg = /^[1-9]{1}\d*$/gi
     const validated = event.target.value

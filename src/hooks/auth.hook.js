@@ -34,10 +34,6 @@ export const useAuth = () => {
     auth.setAdmin(false)
   }, [])
 
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem(storageName))
-
-  }, [login])
 
   return { login, logout, token, userId }
 }
