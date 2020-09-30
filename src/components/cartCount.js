@@ -10,8 +10,8 @@ const CartCount = ({cart}) => {
     )
 }
 
-const mapStateToProps = ({total, cart}) => {
-    return {total, cart}
+const mapStateToProps = ({cart}) => {
+    return {cart}
 }
 
 export default connect(mapStateToProps)(CartCount)

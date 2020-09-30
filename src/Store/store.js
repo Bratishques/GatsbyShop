@@ -1,7 +1,7 @@
 import { createStore as reduxCreateStore } from "redux"
 import {loadState} from "../components/localstorage"
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
   let ware = action.payload
 
   if (action.type === `ADD_ITEM`) {
