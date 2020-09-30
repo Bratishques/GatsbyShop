@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { connect } from "react-redux"
 import "./ware.css"
-const Ware = ({total, addItem, a, cart, increaseAmount, decreaseAmount}) => {
+const Ware = ({ addItem, a, cart, increaseAmount, decreaseAmount}) => {
 
     const wareButton = () => {
         const find = () => {
@@ -32,9 +32,9 @@ const Ware = ({total, addItem, a, cart, increaseAmount, decreaseAmount}) => {
         if (find()) {
             return (
                 <>
-            <button onClick={increaseAmount}>{`ADD MORE ${total}`}</button>
+            <button onClick={increaseAmount}>{`+`}</button>
             {amount()}
-            <button onClick={decreaseAmount}>{`DELETE SHIT`}</button>
+            <button onClick={decreaseAmount}>{`-`}</button>
             </>
             )
         }
@@ -49,19 +49,26 @@ const Ware = ({total, addItem, a, cart, increaseAmount, decreaseAmount}) => {
             }
         }>
         <img className = "wareImage" src={a.image} alt={a.name}/>
-        <div className = "price">{a.price}</div>
-        
-        
+        <div>
+        {a.name}
+        </div>
+        <div>
+        </div>
         </Link>
-        <div>{a.name}
+        <div className = "price">{a.price}</div>
+        <div>
         {wareButton()}
         </div>
+        
+        
+        
+        
         </div>
     )
 }
 
-const mapStateToProps = ({total, cart}) => {
-    return {total, cart}
+const mapStateToProps = ({cart}) => {
+    return {cart}
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     const a = ownProps.a

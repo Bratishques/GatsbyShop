@@ -6,7 +6,6 @@ const reducer = (state, action) => {
 
   if (action.type === `ADD_ITEM`) {
     return Object.assign({}, state, {
-      total: state.total + ware.price,
       cart: [...state.cart, 
       {
       ware: ware,
@@ -18,8 +17,8 @@ const reducer = (state, action) => {
   }
 
   if (action.type === `INCREASE_AMOUNT`) {
+    console.log(state.total)
     return Object.assign({}, state, {
-      total: parseFloat(state.total + ware.price).toFixed(2),
       cart: state.cart.map(obj => {
           if (ware._id === obj.id) {
             return {...obj, count: obj.count + 1}
@@ -32,7 +31,6 @@ const reducer = (state, action) => {
 
   if (action.type === `DECREASE_AMOUNT`) {
     return Object.assign({}, state, {
-      total: parseFloat(state.total - ware.price).toFixed(2),
       cart: state.cart.map(obj => {
           if (ware._id === obj.id && obj.count > 1) {
             return {...obj, count: obj.count - 1}

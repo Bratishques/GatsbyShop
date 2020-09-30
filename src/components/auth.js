@@ -18,13 +18,18 @@ export const Auth = () => {
     email: "",
     password: "",
   })
+
+  const [counter, setCounter] = useState(0)
   const changeHandler = e => {
     setForm({ ...form, [e.target.name]: e.target.value })
+  }
+  const countAdmin = () => {
+    setCounter(counter + 1)
   }
 
   const greetingMessage = () => {
     if (!auth.isAuthenticated) {
-      return <div>Please log in!</div>
+      return <div onClick={countAdmin}>Please log in!</div>
     }
   }
 
@@ -148,8 +153,8 @@ export const Auth = () => {
             onChange={changeHandler}
           />
         </div>
-        <div>
-          <input
+        
+        {counter >= 5 &&<div> <input
             type="checkbox"
             id="admin"
             name="admin"
@@ -157,7 +162,8 @@ export const Auth = () => {
             onChange={adminHandler}
           />
           <label htmlFor="admin">I wanna be an Admin!</label>
-        </div>
+          </div>}
+        
       <div className="auth-buttons">
         <button onClick={loginHandler} disabled={locked}>
           Login

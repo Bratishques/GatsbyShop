@@ -2,7 +2,7 @@ export const loadState = () => {
     try {
         const serializedState = localStorage.getItem('state')
         if (serializedState === null) {
-            return {total:0, cart: []}
+            return {cart: []}
         }
         return JSON.parse(serializedState)
     } catch (err) {
