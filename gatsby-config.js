@@ -44,16 +44,6 @@ module.exports = {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/admin/*`, `/app/*`] },
     },
-    {
-      resolve: `gatsby-source-mongodb`,
-      options: {
-        connectionString:
-          process.env.MONGO_ACCESS_LINK,
-        dbName: `GatsbyShop`,
-        preserveObjectIds: true,
-        collection: [`categories`, `products`],
-      },
-    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
