@@ -21,7 +21,7 @@ const Header = ({ siteTitle }) => {
         <StyledLink to="/app/page2">
          <CartCount></CartCount>
         </StyledLink>
-        <StyledLink to="/Categories">Categories</StyledLink>
+        <StyledLink to="/categories">Categories</StyledLink>
         <StyledLink to="/browse">Browse</StyledLink>
         <StyledLink to={`/app/profile/${auth.idee}`}>Profile</StyledLink>
         {auth.admin && <StyledLink to={`/admin/main`}>Admin Panel</StyledLink>}
@@ -38,7 +38,7 @@ const Header = ({ siteTitle }) => {
           <CartCount></CartCount>
         </StyledLink>
         <StyledLink to="/browse">Browse</StyledLink>
-        <StyledLink to="/Categories">Categories</StyledLink>
+        <StyledLink to="/categories">Categories</StyledLink>
         <StyledLink to="/app/page2">Verify account</StyledLink>
       </ul>
     )
