@@ -5,12 +5,14 @@ import { useHttp } from "../hooks/http.hook"
 import { connect } from "react-redux"
 import Ware from "../components/ware"
 import "../browse.css"
+import config from "../config"
 
 const Browse = () => {
   const [wares, setWares] = useState([])
   const { request, loading } = useHttp()
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
+  const {baseUrl} = config
 
   const [intersecting, setIntersecting] = useState(false)
 
@@ -33,7 +35,7 @@ const Browse = () => {
 
   useEffect(() => {
     async function callList(currentPage) {
-        let list = await request(`/api/list/?page=${currentPage}`, "PUT")
+        let list = await request(`${baseUrl}api/list/?page=${currentPage}`, "PUT")
         setTotalPages(list.totalPages)
         setWares(wares.concat(list.list))
       }

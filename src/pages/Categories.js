@@ -2,26 +2,19 @@ import React, { useState, useEffect } from "react"
 import {useHttp} from "../hooks/http.hook"
 import Ware from "../components/ware"
 import Layout from "../components/layout"
-import { useStaticQuery, graphql } from "gatsby"
+import config from "../config"
+import "../pagepriv/AdminPage.css"
+
 
 
 const Categories = () => {
 
-  
-const data = useStaticQuery(graphql`
-query catQuery {
-  allMongodbGatsbyShopCategories(sort: { fields: name }) {
-    edges {
-      node {
-        name
-      }
-    }
-  }
-}
-`)
-    const [options, setOptions] = useState([])
+  const {baseUrl} = config
+   const [options, setOptions] = useState([])
    const [list, setList] = useState([])
+   const [categories, setCategories] = useState([])
    const {request} = useHttp()
+   const [loading,setLoading] = useState(true)
 
    const changeHandler = (e) => {
        if (options.indexOf(e.target.value) >= 0) {
@@ -34,7 +27,7 @@ query catQuery {
 
    const mapList = () => {
     return (
-        <div>
+        <div className = "admin-wares-grid" >
         {list.map(a => {
             return (
                 <>
@@ -47,31 +40,46 @@ query catQuery {
 }
 
    useEffect(() => {
-       async function getCategories(){
+       async function getWares(){
             if (options.length === 0) {
-                let list = await request("/api/list", "PUT")
+                let list = await request(`${baseUrl}api/list`, "PUT")
                 console.log(list)
                 setList([...list.list])
 
             }
             else {
                 var arrStr = encodeURIComponent(JSON.stringify(options));
-                let list = await request(`/api/categories/?categories=${arrStr}`, "PUT")
+                let list = await request(`${baseUrl}api/categories/?categories=${arrStr}`, "PUT")
                 setList([...list])
             }
        }
-       getCategories()
+       getWares()
 
    }, [options] )
+
+   useEffect(() => {
+     async function getCategories() {
+      let cats = await request(`${baseUrl}api/categories/list`, "GET")
+      console.log(cats)
+      let result = []
+      for (let obj of cats) {
+        result.push(obj["name"])
+      }
+      setCategories([...result])
+      setLoading(false)
+     }
+
+     getCategories()
+   }, [])
     return (
       <Layout>
   <form>
-  <div className="radio">
-  {data.allMongodbGatsbyShopCategories.edges.map(a => {
+  <div className="checkbuttons">
+  {!loading && categories.map(a => {
     return (
       <label>
-      <input type="checkbox" value={`${a.node.name}`} onChange = {changeHandler}/>
-      {a.node.name}
+      <input type="checkbox" value={`${a}`} onChange = {changeHandler}/>
+      {a}
     </label>
     )
   })}
@@ -81,5 +89,7 @@ query catQuery {
 </Layout>
     )
 }
+
+
 
 export default Categories

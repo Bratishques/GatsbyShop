@@ -30,7 +30,7 @@ const CategoryInput = (props) => {
       if (catArr.length === 0) {
         const getCat = async () => {
         setLoading(true)
-        let list = await request("/api/categories/list", "GET")
+        let list = await request(`${baseUrl}api/categories/list`, "GET")
         let result = []
         for (let obj of list) {
           result.push(obj["name"])

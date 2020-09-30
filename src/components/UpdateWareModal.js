@@ -2,35 +2,12 @@ import React, { useState} from "react"
 import AddWareImage from "./AddWareImage"
 import AddWareInput from "./AddWareInput"
 import CategoryInput from "./CategoryInput"
-import { useStaticQuery, graphql } from "gatsby"
+import config from "../config"
 
 export const UpdateWareModal = props => {
   const { name, image, price, inStock , description, isUpdating, setIsUpdating, category} = props
   const [loading, setLoading] = useState(false)
-
-
-  const data = useStaticQuery(graphql`
-    query{
-      allMongodbGatsbyShopCategories {
-        nodes {
-          name
-          mongodb_id
-        }
-      }
-    }
-  `)
-
-
-  const filterCategory = (categories) => {
-    for (let categoryData of categories) {
-        if (categoryData.mongodb_id === category) {
-            return categoryData.name
-        }
-    }
-  }
-
-  const categoryName = filterCategory(data.allMongodbGatsbyShopCategories.nodes)
-
+  const {baseUrl} = config
 
   const defForm = {
     Name: {
@@ -42,7 +19,7 @@ export const UpdateWareModal = props => {
       isValid: true,
     },
     Category: {
-      value: categoryName,
+      value: category.name,
       isValid: true,
     },
     Price: {
@@ -112,7 +89,7 @@ export const UpdateWareModal = props => {
       data.append("def" + key, defForm[key]["value"])
     }
     console.log(data)
-    const response = await fetch(`/api/products/update/`, {
+    const response = await fetch(`${baseUrl}api/products/update/`, {
       method: "POST",
       body: data,
     })

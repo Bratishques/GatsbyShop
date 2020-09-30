@@ -3,8 +3,10 @@ import { useHttp } from "../hooks/http.hook"
 import { AuthContext } from "../context/AuthContext"
 import { useAuth } from "../hooks/auth.hook"
 import "./auth.css"
+import config from "../config"
 
 export const Auth = () => {
+  const {baseUrl} = config
   const auth = useContext(AuthContext)
   const { login } = useAuth()
   const [locked, setLocked] = useState(false)
@@ -40,7 +42,7 @@ export const Auth = () => {
       if (!validateRegister(email, password)) {
         return
       }
-      const data = await request("api/auth/register", "POST", {
+      const data = await request(`${baseUrl}api/auth/register`, "POST", {
         ...form,
         admin,
       })
@@ -109,7 +111,7 @@ export const Auth = () => {
         messages: [],
       })
       setLocked(true)
-      const resp = await request("api/auth/login", "POST", { ...form })
+      const resp = await request(`${baseUrl}api/auth/login`, "POST", { ...form })
       setLocked(false)
       if (resp.error) {
 

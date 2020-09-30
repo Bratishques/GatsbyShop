@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import config from "../config"
 import { UpdateWareModal } from "./UpdateWareModal"
 
 import "./ware.css"
@@ -7,6 +8,7 @@ const AdminWare = props => {
   const [isUpdating, setIsUpdating] = useState(false)
   const [loading, setLoadng] = useState(false)
   const { name, image, price, wares, setWares } = props
+  const {baseUrl} = config
   console.log(process.env)
   const openModal = () => {
       setIsUpdating(true)
@@ -18,13 +20,12 @@ const AdminWare = props => {
     for (let key in props) {
       data.append(key, props[key])
     }
-    const response = await fetch(`/api/products/delete/`, {
+    const response = await fetch(`${baseUrl}api/products/delete/`, {
       method: "POST",
       body: data,
     })
     const respData = await response.json()
     console.log(respData)
-    await fetch(`http://localhost:8000/__refresh`, {method: "POST"})
     setLoadng(false)
     const newWares = wares.filter(a => {
       if (a.name === name) {

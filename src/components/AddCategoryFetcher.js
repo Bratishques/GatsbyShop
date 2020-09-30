@@ -28,7 +28,6 @@ const AddCategoryFetcher = () => {
         done: true,
       })
       setLoading(false)
-      await fetch(`http://localhost:8000/__refresh`, { method: "POST" })
     } catch (e) {
       console.log(e)
     }

@@ -2,8 +2,10 @@ import React, { useState} from "react"
 import AddWareImage from "./AddWareImage"
 import AddWareInput from "./AddWareInput"
 import CategoryInput from "./CategoryInput"
+import config from "../config"
 
 export const AddWareModal = props => {
+  const {baseUrl} = config
   const defForm = {
     Name: {
       value: "",
@@ -84,7 +86,7 @@ export const AddWareModal = props => {
       preview: false,
     })
     console.log(data)
-    const response = await fetch(`/api/products/add/`, {
+    const response = await fetch(`${baseUrl}api/products/add/`, {
       method: "POST",
       body: data,
     })

@@ -1,5 +1,5 @@
 const config = {
-    baseUrl: ""
+    baseUrl: "https://serene-cliffs-87530.herokuapp.com/"
 }
 
 export default config

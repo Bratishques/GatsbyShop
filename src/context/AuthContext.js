@@ -1,7 +1,9 @@
 import React, { createContext, useState, useEffect } from "react"
 import { useHttp } from "../hooks/http.hook"
+import config from "../config"
 export const AuthContext = createContext()
 export const isBrowser = () => typeof window !== "undefined"
+
 
 const storageName = "accdata"
 
@@ -15,12 +17,13 @@ const GlobalContextProvider = ({ children }) => {
   const [isAuthenticated, setisAuthenticated] = useState(!!data.token)
   const [idee, setIdee] = useState(null)
   const [admin, setAdmin] = useState(false)
+  const {baseUrl} = config
 
   useEffect(() => {
     async function callVerify() {
       if (data.token) {
         console.log(data.userId)
-        const verify = await request("/api/auth/token", "POST", "", {
+        const verify = await request(`${baseUrl}api/auth/token`, "POST", "", {
           authorization: `Bearer ${data.token}`,
           userId: data.userId,
         })

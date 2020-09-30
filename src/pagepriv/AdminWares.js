@@ -5,6 +5,7 @@ import {AddWareModal} from "../components/AddWareModal"
 import AdminWare from "../components/AdminWare"
 import Observer from '@researchgate/react-intersection-observer';
 import { useHttp } from "../hooks/http.hook"
+import config from "../config"
 
 const AdminWares = () => {
     const [currentPage, setCurrentPage] = useState(1)
@@ -13,6 +14,7 @@ const AdminWares = () => {
     const {request, loading} = useHttp()
     const [isAdding, setIsAdding] = useState(false)
     const [intersecting, setIntersecting] = useState(false)
+    const {baseUrl} = config
 
     const addNewItem = () => {
         setIsAdding(!isAdding)
@@ -36,7 +38,7 @@ const AdminWares = () => {
 
     useEffect( () => {
       async function callList() {
-      let list = await request(`/api/list/?page=${currentPage}`, "PUT")
+      let list = await request(`${baseUrl}api/list/?page=${currentPage}`, "PUT")
       setTotalPages(list.totalPages)
       setWares(wares.concat(list.list))           
   }
