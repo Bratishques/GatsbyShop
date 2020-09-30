@@ -8,6 +8,7 @@ export const useAuth = () => {
   const auth = useContext(AuthContext)
 
   const login = useCallback((jwtToken, id, admin) => {
+    if (jwtToken && id ) {
     setToken(jwtToken)
     setUserId(id)
     localStorage.setItem(
@@ -23,6 +24,7 @@ export const useAuth = () => {
       console.log(admin)
       auth.setAdmin(true)
     }
+  }
   }, [])
 
   const logout = useCallback(() => {

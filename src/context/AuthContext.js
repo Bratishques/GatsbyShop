@@ -36,7 +36,6 @@ const GlobalContextProvider = ({ children }) => {
         if (verify.message === "invalid") {
           console.log(verify.message)
           localStorage.removeItem(storageName)
-          window.location.reload()
         }
       }
     }

@@ -3,13 +3,6 @@ import {loadState} from "../components/localstorage"
 
 const reducer = (state, action) => {
   let ware = action.payload
-  const findCount = (arr, id) => {
-    for (let elem of arr) {
-        if (elem.id === id & elem.count > 0) {
-            return elem
-        }
-    }
-}
 
   if (action.type === `ADD_ITEM`) {
     return Object.assign({}, state, {
@@ -26,7 +19,7 @@ const reducer = (state, action) => {
 
   if (action.type === `INCREASE_AMOUNT`) {
     return Object.assign({}, state, {
-      total: state.total + ware.price,
+      total: parseFloat(state.total + ware.price).toFixed(2),
       cart: state.cart.map(obj => {
           if (ware._id === obj.id) {
             return {...obj, count: obj.count + 1}
@@ -39,7 +32,7 @@ const reducer = (state, action) => {
 
   if (action.type === `DECREASE_AMOUNT`) {
     return Object.assign({}, state, {
-      total: state.total - ware.price,
+      total: parseFloat(state.total - ware.price).toFixed(2),
       cart: state.cart.map(obj => {
           if (ware._id === obj.id && obj.count > 1) {
             return {...obj, count: obj.count - 1}

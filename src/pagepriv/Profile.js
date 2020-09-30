@@ -43,7 +43,8 @@ export const Profile = props => {
         setIsUploading={setIsUploading}
       ></ImageModal>
       <div className = "user-image-wrap">
-      <img src={profileData.imageUrl} alt="Your Avatar" className = {`user-image`}/>
+      {profileData.imageUrl ? <img src={profileData.imageUrl} alt="Your Avatar" className = {`user-image`}/> : `No avatar yet!`}
+
       </div>
       Your email is: {profileData.email}
     </div>
