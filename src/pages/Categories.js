@@ -3,7 +3,7 @@ import {useHttp} from "../hooks/http.hook"
 import Ware from "../components/ware"
 import Layout from "../components/layout"
 import config from "../config"
-import "../pagepriv/AdminPage.css"
+import "../pagepriv/adminPage.css"
 
 
 

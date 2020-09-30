@@ -1,12 +1,11 @@
 
 
-import React, { useEffect } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
-import { useHttp } from "../hooks/http.hook"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
