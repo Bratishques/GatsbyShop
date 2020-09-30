@@ -1,7 +1,7 @@
 import React, { useState} from "react"
-import AddWareImage from "./AddWareImage"
-import AddWareInput from "./AddWareInput"
-import CategoryInput from "./CategoryInput"
+import AddWareImage from "./addWareImage"
+import AddWareInput from "./addWareInput"
+import CategoryInput from "./categoryInput"
 import config from "../config"
 
 export const AddWareModal = props => {

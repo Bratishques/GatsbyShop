@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import config from "../config"
-import { UpdateWareModal } from "./UpdateWareModal"
+import { UpdateWareModal } from "./updateWareModal"
 
 import "./ware.css"
 

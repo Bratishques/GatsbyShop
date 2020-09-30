@@ -1,5 +1,5 @@
 import React from "react"
-import GlobalContextProvider from "./src/context/AuthContext"
+import GlobalContextProvider from "./src/context/authContext"
 import { Provider } from "react-redux"
 import createStore from "./src/Store/store"
 import {saveState}  from "./src/components/localstorage"

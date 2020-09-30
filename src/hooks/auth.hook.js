@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useContext } from "react"
-import { AuthContext } from "../context/AuthContext"
+import { AuthContext } from "../context/authContext"
 
 const storageName = "accdata"
 export const useAuth = () => {

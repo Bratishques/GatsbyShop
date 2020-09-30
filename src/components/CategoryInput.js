@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import AddCategoryButton from "./AddCategoryButton"
-import AddCategoryFetcher from "./AddCategoryFetcher"
-import DroppedCategory from "./DroppedCategory"
+import AddCategoryButton from "./addCategoryButton"
+import AddCategoryFetcher from "./addCategoryFetcher"
+import DroppedCategory from "./droppedCategory"
 import config from "../config"
 import { useHttp } from "../hooks/http.hook"
 const {baseUrl} = config

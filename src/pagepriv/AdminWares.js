@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import "./Profile.css"
 import "./AdminPage.css"
-import {AddWareModal} from "../components/AddWareModal"
-import AdminWare from "../components/AdminWare"
+import {AddWareModal} from "../components/addWareModal"
+import AdminWare from "../components/adminWare"
 import Observer from '@researchgate/react-intersection-observer';
 import { useHttp } from "../hooks/http.hook"
 import config from "../config"

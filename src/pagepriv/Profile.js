@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useHttp } from "../hooks/http.hook"
 import "./Profile.css"
-import { ImageModal } from "../components/ImageModal"
+import { ImageModal } from "../components/imageModal"
 
 export const Profile = props => {
   const [loading, setLoading] = useState(true)

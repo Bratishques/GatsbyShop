@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react"
 import { useHttp } from "../hooks/http.hook"
-import { AuthContext } from "../context/AuthContext"
+import { AuthContext } from "../context/authContext"
 import { useAuth } from "../hooks/auth.hook"
 import "./auth.css"
 import config from "../config"

@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { navigate } from "gatsby"
-import { AuthContext } from "../context/AuthContext"
+import { AuthContext } from "../context/authContext"
 
 const PrivateRoute = ({ component: Component, location, ...rest }) => {
     const auth = useContext(AuthContext)

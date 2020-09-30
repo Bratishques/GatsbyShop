@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
 
 const Cart = ({cart, addItem, total}) => {

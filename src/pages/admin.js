@@ -1,9 +1,9 @@
 import React from "react"
 import { Router } from "@reach/router"
 import Layout from "../components/layout"
-import AdminRoute from "../components/AdminRoute"
-import AdminPage from "../pagepriv/AdminPage"
-import AdminWares from "../pagepriv/AdminWares"
+import AdminRoute from "../components/adminRoute"
+import AdminPage from "../pagepriv/adminPage"
+import AdminWares from "../pagepriv/adminWares"
 
 const admin = () => (
   <Layout>
