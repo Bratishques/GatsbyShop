@@ -18,7 +18,7 @@ const AddCategoryFetcher = () => {
       setLoading(true)
       console.log(candidate)
       const { error, message } = await request(
-        `${baseUrl}/api/categories/add`,
+        `${baseUrl}api/categories/add`,
         "POST",
         { category: candidate }
       )
