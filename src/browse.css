@@ -1,6 +1,6 @@
 .browse-wrap {
     display: grid;
-    grid-template: "a b";
+    grid-template: "a b c";
     column-gap: 50px;
     row-gap: 50px;
 }
