@@ -1,0 +1,40 @@
+.auth-forms {
+    display: grid;
+    grid-template-rows: "a";
+    row-gap: 20px;
+    min-width: 280px;
+    max-width: 350px;
+    margin-bottom: 30px;
+}
+
+.auth-input {
+    width: auto !important;
+}
+
+.auth_form {
+    display: grid;
+    grid-template-rows: "a";
+}
+
+.auth-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.auth-notifications {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    color: transparent;
+    transition: all 1s ease;
+}
+
+.auth-notifications.error {
+    background-color: rgb(250, 145, 126);
+    color: inherit;
+}
+
+.auth-notifications.registered {
+    background-color: rgba(255, 253, 144, 0.959);
+    color: inherit;
+}
