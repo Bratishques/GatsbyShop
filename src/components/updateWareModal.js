@@ -1,13 +1,25 @@
-import React, { useState} from "react"
+import React, { useState } from "react"
 import AddWareImage from "./addWareImage"
 import AddWareInput from "./addWareInput"
 import CategoryInput from "./categoryInput"
 import config from "../config"
 
 export const UpdateWareModal = props => {
-  const { name, image, price, inStock , description, isUpdating, setIsUpdating, category} = props
+  const {
+    name,
+    image,
+    price,
+    inStock,
+    description,
+    isUpdating,
+    setIsUpdating,
+    category,
+    wares,
+    id,
+    setWares
+  } = props
   const [loading, setLoading] = useState(false)
-  const {baseUrl} = config
+  const { baseUrl } = config
 
   const defForm = {
     Name: {
@@ -35,7 +47,6 @@ export const UpdateWareModal = props => {
     image: false,
     preview: image,
   })
-
   const [form, setForm] = useState(defForm)
 
   const addWareFormValid = (file, form) => {
@@ -52,7 +63,39 @@ export const UpdateWareModal = props => {
     } else return false
   }
 
+  const replaceWare = (
+    name,
+    image,
+    price,
+    inStock,
+    description,
+    category
+  ) => {
+    const newWares = wares.map(a => {
+      if (a._id === props._id) {
+        console.log(file.image.preview)
+        if (!file.preview) {
+          image = props.image
+      
+        }
+
+        a.name = name
+        a.image = image
+        a.price = price
+        a.inStock = inStock
+        a.description = description
+        a.category = category
+        return a
+      
+      } else return a
+    })
+    setWares(newWares)
+    console.log(newWares)
+    return newWares
+  }
+
   const closeWindow = () => {
+ 
     setIsUpdating(!isUpdating)
     setForm(defForm)
     setFile({
@@ -77,10 +120,12 @@ export const UpdateWareModal = props => {
   const uploadFile = async () => {
     setLoading(true)
     const data = new FormData()
-    const {Name} = form
+    const { Name, Category, Price, Description } = form
+
+    
 
     if (file.image) {
-    data.append("file", file.image, Name["value"])
+      data.append("file", file.image, Name["value"])
     }
     for (let key in form) {
       data.append(key, form[key]["value"])
@@ -94,8 +139,18 @@ export const UpdateWareModal = props => {
       body: data,
     })
     const respData = await response.json()
+       
+    replaceWare(
+      Name.value,
+      file.preview,
+      Price.value,
+      form["In Stock"].value,
+      Description.value,
+      Category.value,
+    )
     console.log(respData)
     setLoading(false)
+    closeWindow()
   }
 
   if (isUpdating) {
@@ -105,7 +160,11 @@ export const UpdateWareModal = props => {
           <div className="modal-container">
             <div className={`top-modal-container`}>
               <h4 className={`modal-top`}>Choose an Item to Add</h4>
-              <button className={`closeModal`} onClick={closeWindow} disabled = {loading}>
+              <button
+                className={`closeModal`}
+                onClick={closeWindow}
+                disabled={loading}
+              >
                 Close
               </button>
             </div>

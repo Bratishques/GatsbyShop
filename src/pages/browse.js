@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import { useHttp } from "../hooks/http.hook"
 import { connect } from "react-redux"
 import Ware from "../components/ware"
-import "../browse.css"
+import "./browse.css"
 import config from "../config"
 
 const Browse = () => {

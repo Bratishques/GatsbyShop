@@ -7,9 +7,8 @@ import "./ware.css"
 const AdminWare = props => {
   const [isUpdating, setIsUpdating] = useState(false)
   const [loading, setLoadng] = useState(false)
-  const { name, image, price, wares, setWares } = props
+  const { name, image, price, wares, setWares, _id } = props
   const {baseUrl} = config
-  console.log(process.env)
   const openModal = () => {
       setIsUpdating(true)
   }
@@ -43,6 +42,8 @@ const AdminWare = props => {
         {...props}
         isUpdating={isUpdating}
         setIsUpdating={setIsUpdating}
+        setWares = {setWares}
+        wares = {wares}
       />
       <div className="ware">
         <img className="wareImage" src={image} />

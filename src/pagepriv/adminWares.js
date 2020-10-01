@@ -20,6 +20,10 @@ const AdminWares = () => {
         setIsAdding(!isAdding)
     }
 
+    const refresher = () => {
+        return null
+    }
+
     const handleIntersection = (event) => {
       if (!loading) {
       setIntersecting(!intersecting)
@@ -59,7 +63,7 @@ const AdminWares = () => {
             Browse and Modify
             <div className="admin-wares-grid">
                 {wares.map(a => {
-                    return <AdminWare {...a} wares = {wares} setWares = {setWares}/>
+                    return <AdminWare {...a} wares = {wares} setWares = {setWares} />
                 })}
             </div>
             <Observer {...options}>
