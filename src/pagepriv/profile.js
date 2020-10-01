@@ -13,7 +13,7 @@ export const Profile = props => {
 
   useEffect(() => {
     async function getProfile(id) {
-      const data = await request(`/api/profile/${id}`, "GET")
+      const data = await request(`${baseUrl}api/profile/${id}`, "GET")
       console.log(data)
       if (data.error) {
         setError(data.error)
