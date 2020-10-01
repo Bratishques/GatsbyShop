@@ -95,7 +95,6 @@ export const UpdateWareModal = props => {
     })
     const respData = await response.json()
     console.log(respData)
-    await fetch(`http://localhost:8000/__refresh`, {method: "POST"})
     setLoading(false)
   }
 

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react"
 import { useHttp } from "../hooks/http.hook"
 import "./profile.css"
 import { ImageModal } from "../components/imageModal"
+import config from "../config"
 
 export const Profile = props => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [profileData, setProfileData] = useState({})
   const [isUploading, setIsUploading] = useState(false)
+  const {baseUrl} = config
   const { request } = useHttp()
   const { id } = props
 
