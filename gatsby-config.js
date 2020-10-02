@@ -9,8 +9,8 @@
   
 module.exports = {
   siteMetadata: {
-    title: `My example app`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `GatsbyShop`,
+    description: `This is my portfolio project to show React/Gatsby/Redux/UseContext and Node.js/MongoDB stack interaction`,
     author: ``,
   },
   proxy: {

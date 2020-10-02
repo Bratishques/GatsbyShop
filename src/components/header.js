@@ -18,7 +18,7 @@ const Header = ({ siteTitle }) => {
   const loggedNav = () => {
     return (
       <ul className="nav-wrap">
-        <StyledLink to="/app/page2">
+        <StyledLink to="/cart">
          <CartCount></CartCount>
         </StyledLink>
         <StyledLink to="/categories">Categories</StyledLink>

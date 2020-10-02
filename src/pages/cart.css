@@ -1,0 +1,32 @@
+.cart-ware-grid{
+    
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    column-gap: 20px;
+}
+
+.cart-wares-grid {
+    background-color: rgb(242, 243, 242);
+    display: grid;
+    grid-template-rows: "a";
+    row-gap: 40px;
+    padding: 20px;
+}
+
+.cart-ware-image {
+    object-fit: contain;
+    height: 80px;
+    margin-bottom: 0;
+}
+
+.cart-ware-middle{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart-ware-buttons-div {
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+}
