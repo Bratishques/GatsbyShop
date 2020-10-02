@@ -34,7 +34,7 @@ const Header = ({ siteTitle }) => {
     return (
       <ul className="nav-wrap">
         <StyledLink to="/app/page2">Login</StyledLink>
-        <StyledLink to="/app/page2">
+        <StyledLink to="/cart">
           <CartCount></CartCount>
         </StyledLink>
         <StyledLink to="/browse">Browse</StyledLink>

@@ -31,31 +31,30 @@ const Ware = ({ addItem, a, cart, increaseAmount, decreaseAmount}) => {
         }
         if (find()) {
             return (
-                <>
+                <div className = {`ware-buttons`}>
             <button onClick={increaseAmount}>{`+`}</button>
             {amount()}
             <button onClick={decreaseAmount}>{`-`}</button>
-            </>
+            </div>
             )
         }
     }
 
     return (
         <div className = "ware">
-        <Link to={`/app/ware/${a._id}`} style = {
-            {
-                textDecoration: "none",
-
-            }
-        }>
+        <Link to={`/app/ware/${a._id}`} style={{
+            textDecoration: "none",
+            color: "black"
+        }}>
         <img className = "wareImage" src={a.image} alt={a.name}/>
-        <div>
-        {a.name}
+        <div className="ware-pricename-grid">
+        <div className = "ware-pricename-name">{a.name}</div>
+        <div className = "ware-pricename-price">{a.price}</div>
         </div>
         <div>
         </div>
         </Link>
-        <div className = "price">{a.price}</div>
+        
         <div>
         {wareButton()}
         </div>

@@ -25,16 +25,17 @@ const Cart = (props) => {
     
     return (
         <Layout>
-            {auth.isAuthenticated &&
+            {auth.isAuthenticated ?
             <div>
-        <div>Here is your cart</div>
+        <div><h3>Here is your cart</h3></div>
+        {props.cart.length > 0 ?
         <div  className={`cart-wares-grid`}>
         {props.cart.map(a=> {
             return <CartWare {...a}/>
         })}
-        </div>
+        </div> : <div><h4> Cart is empty</h4></div>}
         <div>And here is the total: {getTotal()} USD</div>
-        </div>
+        </div> : <div><h4>Log in to see your cart!</h4></div>
         }
         </Layout>
         

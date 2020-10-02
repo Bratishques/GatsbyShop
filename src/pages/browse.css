@@ -1,6 +1,7 @@
 .browse-wrap {
     display: grid;
     grid-template: "a b c";
-    column-gap: 50px;
+    column-gap: 70px;
     row-gap: 50px;
+    justify-items: center;
 }

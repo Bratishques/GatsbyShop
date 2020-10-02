@@ -12,15 +12,13 @@ const Browse = () => {
   const { request, loading } = useHttp()
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
-  const {baseUrl} = config
-
+  const { baseUrl } = config
   const [intersecting, setIntersecting] = useState(false)
 
   const handleIntersection = event => {
     if (!loading) {
       setIntersecting(!intersecting)
       console.log("yes")
-        
     }
     if (intersecting && currentPage < totalPages) {
       setCurrentPage(currentPage + 1)
@@ -35,21 +33,19 @@ const Browse = () => {
 
   useEffect(() => {
     async function callList(currentPage) {
-        let list = await request(`${baseUrl}api/list/?page=${currentPage}`, "PUT")
-        setTotalPages(list.totalPages)
-        setWares(wares.concat(list.list))
-      }
-        callList(currentPage)
+      let list = await request(`${baseUrl}api/list/?page=${currentPage}`, "PUT")
+      setTotalPages(list.totalPages)
+      setWares(wares.concat(list.list))
+    }
+    callList(currentPage)
   }, [currentPage, request])
 
   const mapWares = () => {
     return (
       <div className="browse-wrap">
-        {wares.map((a, i) => {
+        {wares.map((a) => {
           return (
-            <>
-              <Ware a={a} />
-            </>
+              <Ware a={a}/>
           )
         })}
       </div>

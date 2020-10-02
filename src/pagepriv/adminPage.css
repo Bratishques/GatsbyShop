@@ -147,4 +147,5 @@ input[type=text] {
 .admin-wares-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 80px;
 }

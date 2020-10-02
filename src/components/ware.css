@@ -1,18 +1,23 @@
 .wareImage {
-    width: 300px;
+    width: 200px;
     height: 200px;
     object-fit: contain;
     margin: 0;
 }
 
 .ware {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
     align-items: center;
+    padding: 20px 20px;
+    background-color: honeydew;
+    justify-content: space-between;
 }
 
-.price {
-    padding: 15px 15px;
-    background-color: #9FFF24;
-    color: #484848 ;
-    width: 150px;
-    font-size: 28px;
+.ware-pricename-grid {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+
 }
