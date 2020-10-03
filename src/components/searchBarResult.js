@@ -1,8 +1,7 @@
 import React from "react"
 
 const searchBarResult = props => {
-  //const isWare = !!props.price
-  const isWare = true
+  const isWare = !!props.price
   return (
     <div
       className="search-bar-dropper-wrap"
@@ -18,26 +17,28 @@ const searchBarResult = props => {
           columnGap: "10px"
       }}
       >
-      <div style = {{
+      <img style = {{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           width: "50px",
-          height: "50px"
-      }}>IMG</div>
+          height: "50px",
+          objectFit: "contain",
+          marginBottom: "0"
+      }} src = {props.image} alt = {props.name}/>
       <div style = {{
           display: "flex",
           alignItems: "center",
-      }}>Text</div>
+      }}>{props.name}</div>
 
-      </div> : <div className="serach-bar-dropper-ware-grid"
+      </div> : <div className="serach-bar-dropper-category"
       style = {{
-          display: "grid",
-          gridTemplateColumns: "50px 1fr",
-          columnGap: "10px"
+          height: "50px",
+          display: "flex",
+          alignItems: "center",
       }}
       >
-
+    <h4>{props.name}</h4>
       </div>}
     </div>
   )

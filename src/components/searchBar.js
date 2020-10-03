@@ -71,7 +71,9 @@ const SearchBar = props => {
       style = {{
           padding: "0 10px"
       }}
-      >...Loading</div> : <SearchBarResult/>}
+      >...Loading</div> : results.map(a => {
+        return <SearchBarResult {...a}/>
+      })}
         
         
       </div>}
