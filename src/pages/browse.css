@@ -5,3 +5,10 @@
     row-gap: 50px;
     justify-items: center;
 }
+
+.browse-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+

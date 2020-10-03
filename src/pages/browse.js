@@ -6,6 +6,7 @@ import { connect } from "react-redux"
 import Ware from "../components/ware"
 import "./browse.css"
 import config from "../config"
+import SearchBar from "../components/searchBar"
 
 const Browse = () => {
   const [wares, setWares] = useState([])
@@ -55,10 +56,10 @@ const Browse = () => {
   return (
     <Layout>
       <div id="scrolling-container">
-        <div>Hi, this is a shop!</div>
+        <div className= "browse-top">Hi, this is a shop! <SearchBar/></div>
         {mapWares()}
         <Observer {...options}>
-          <div>IF YOU SEE ME THIS MUST LOAD MORE SHIT HONEY</div>
+          <div>Intersection obs</div>
         </Observer>
       </div>
     </Layout>

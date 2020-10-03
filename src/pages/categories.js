@@ -4,6 +4,7 @@ import Ware from "../components/ware"
 import Layout from "../components/layout"
 import config from "../config"
 import "../pagepriv/adminPage.css"
+import "./browse.css"
 
 
 
@@ -27,7 +28,7 @@ const Categories = () => {
 
    const mapList = () => {
     return (
-        <div className = "admin-wares-grid" >
+        <div className = "browse-wrap" >
         {list.map(a => {
             return (
                 <>
