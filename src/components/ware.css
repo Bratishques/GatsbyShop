@@ -21,3 +21,21 @@
     justify-content: space-between;
 
 }
+
+@media(max-width: 700px) {
+    .wareImage {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        margin: 0;
+    }
+    .ware {
+        display: flex;
+        flex-direction: column;
+        width: 140px;
+        align-items: center;
+        padding: 20px 20px;
+        background-color: honeydew;
+        justify-content: space-between;
+    }
+}

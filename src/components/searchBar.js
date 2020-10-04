@@ -14,6 +14,12 @@ const SearchBar = props => {
   const searchChangeHandler = e => {
     setSearchValue(e.target.value)
   }
+  const blurHandler = () => {
+    setDropOpen(false)
+  }
+  const focusHandler = () => {
+    setDropOpen(true)
+  }
   useEffect(() => {
     const searchHandler = async () => {
         if (searchValue.length > 1) {
@@ -53,6 +59,8 @@ const SearchBar = props => {
           type="text"
           value={searchValue}
           onChange={searchChangeHandler}
+          onBlur = {blurHandler}
+          onFocus = {focusHandler}
         />
         <button>Search</button>
       </div>

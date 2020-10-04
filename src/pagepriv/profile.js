@@ -11,7 +11,9 @@ export const Profile = props => {
   const [isUploading, setIsUploading] = useState(false)
   const {baseUrl} = config
   const { request } = useHttp()
-  const { id } = props
+  const  id  =  JSON.parse(localStorage.getItem("accdata")).userId
+  console.log()
+ 
 
   useEffect(() => {
     async function getProfile(id) {

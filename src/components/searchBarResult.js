@@ -10,7 +10,11 @@ const searchBarResult = props => {
         position: "relative",
       }}
     >
-      {isWare ? <div className="serach-bar-dropper-ware-grid"
+      {isWare ? <button style ={{
+          border: "none",
+          width: "100%",
+          
+      }}><div className="serach-bar-dropper-ware-grid"
       style = {{
           display: "grid",
           gridTemplateColumns: "50px 1fr",
@@ -31,14 +35,16 @@ const searchBarResult = props => {
           alignItems: "center",
       }}>{props.name}</div>
 
-      </div> : <div className="serach-bar-dropper-category"
+      </div></button> : <div className="serach-bar-dropper-category"
       style = {{
           height: "50px",
           display: "flex",
           alignItems: "center",
       }}
       >
-    <h4>{props.name}</h4>
+    <h4 style = {{
+        marginBottom: "0px"
+    }}>{props.name}</h4>
       </div>}
     </div>
   )

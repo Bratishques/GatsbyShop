@@ -20,6 +20,7 @@ export const UpdateWareModal = props => {
   } = props
   const [loading, setLoading] = useState(false)
   const { baseUrl } = config
+  console.log(description)
 
   const defForm = {
     Name: {
@@ -78,7 +79,7 @@ export const UpdateWareModal = props => {
           image = props.image
       
         }
-
+        console.log(description)
         a.name = name
         a.image = image
         a.price = price
@@ -90,14 +91,12 @@ export const UpdateWareModal = props => {
       } else return a
     })
     setWares(newWares)
-    console.log(newWares)
     return newWares
   }
 
   const closeWindow = () => {
  
     setIsUpdating(!isUpdating)
-    setForm(defForm)
     setFile({
       image: false,
       preview: image,

@@ -21,7 +21,9 @@ const AdminPage = () => {
         <AdminLink to={`/admin/wares`}>
           <button>Change the displayed wares</button>
         </AdminLink>
-
+        <AdminLink to={`/admin/categories`}>
+          <button>Change the categories</button>
+        </AdminLink>
         <AdminLink to={`/admin/users`}>
           <button>Promote, delete and change users</button>
         </AdminLink>
