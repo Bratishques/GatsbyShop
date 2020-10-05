@@ -7,7 +7,7 @@ export const useAuth = () => {
   const [userId, setUserId] = useState(null)
   const auth = useContext(AuthContext)
 
-  const login = useCallback((jwtToken, id, admin) => {
+  const login = useCallback((jwtToken, id, admin, state = {}) => {
     if (jwtToken && id ) {
     setToken(jwtToken)
     setUserId(id)

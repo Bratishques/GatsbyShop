@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react"
 import { navigate } from "gatsby"
-import {Auth} from "../components/auth"
+import Auth from "../components/auth"
 import Layout from "../components/layout"
 
 import SEO from "../components/seo"

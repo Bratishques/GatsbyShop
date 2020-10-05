@@ -4,6 +4,12 @@ import {loadState} from "../components/localstorage"
 export const reducer = (state, action) => {
   let ware = action.payload
 
+  if (action.type == `LOAD_CART`) {
+    return Object.assign({}, state, {
+      cart: [...ware]
+    })
+  }
+
   if (action.type === `ADD_ITEM`) {
     return Object.assign({}, state, {
       cart: [...state.cart, 
@@ -17,7 +23,6 @@ export const reducer = (state, action) => {
   }
 
   if (action.type === `INCREASE_AMOUNT`) {
-    console.log(state.total)
     return Object.assign({}, state, {
       cart: state.cart.map(obj => {
           if (ware._id === obj.id) {
@@ -52,5 +57,5 @@ const persistedState = loadState()
 
 
 
-const createStore = () => reduxCreateStore(reducer, persistedState)
+const createStore =  () => reduxCreateStore(reducer, persistedState)
 export default createStore

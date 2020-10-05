@@ -4,8 +4,9 @@ import { AuthContext } from "../context/authContext"
 import { useAuth } from "../hooks/auth.hook"
 import "./auth.css"
 import config from "../config"
+import { connect } from "react-redux"
 
-export const Auth = () => {
+const Auth = () => {
   const {baseUrl} = config
   const auth = useContext(AuthContext)
   const { login } = useAuth()
@@ -185,3 +186,10 @@ export const Auth = () => {
     </div>
   )
 }
+
+
+const mapStateToProps = ({cart}) => {
+  return {cart}
+}
+
+export default connect(mapStateToProps)(Auth)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import Observer from "@researchgate/react-intersection-observer"
 import Layout from "../components/layout"
 import { useHttp } from "../hooks/http.hook"
@@ -48,7 +48,7 @@ const Browse = () => {
           return (
               <Ware a={a}/>
           )
-        })}
+        }) }
       </div>
     )
   }

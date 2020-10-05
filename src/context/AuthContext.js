@@ -1,13 +1,14 @@
 import React, { createContext, useState, useEffect } from "react"
 import { useHttp } from "../hooks/http.hook"
 import config from "../config"
+import { connect } from "react-redux"
 export const AuthContext = createContext()
 export const isBrowser = () => typeof window !== "undefined"
 
 
 const storageName = "accdata"
 
-const GlobalContextProvider = ({ children }) => {
+const GlobalContextProvider = ({ children, loadCart }) => {
   const data = (() => {
     if (isBrowser() && window.localStorage.getItem(storageName)) {
       return JSON.parse(window.localStorage.getItem(storageName))
@@ -46,6 +47,21 @@ const GlobalContextProvider = ({ children }) => {
     callVerify()
   }, [isAuthenticated])
 
+
+  useEffect(() => {
+    async function getCart() {
+      if (isAuthenticated) {
+        const id = JSON.parse(localStorage.getItem("accdata")).userId
+              const data = await fetch(`${baseUrl}api/profile/getcart/${id}`, {
+                  method: "GET",
+                })
+                const response = await data.json()
+                console.log(response)
+                loadCart(response.cart)
+          }
+    }
+    getCart()
+  }, [isAuthenticated])
   return (
     <AuthContext.Provider
       value={{
@@ -62,4 +78,17 @@ const GlobalContextProvider = ({ children }) => {
   )
 }
 
-export default GlobalContextProvider
+const mapStateToProps = ({cart}) => {
+  return {cart}
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return { loadCart: (cart) => dispatch({ 
+              type: `LOAD_CART`,
+              payload: cart
+          })
+}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(GlobalContextProvider)
+
+
