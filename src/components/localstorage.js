@@ -1,5 +1,4 @@
 import config from "../config"
-import { useHttp } from "../hooks/http.hook"
 
 const { baseUrl } = config
 
