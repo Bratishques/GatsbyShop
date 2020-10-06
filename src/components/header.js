@@ -14,6 +14,7 @@ const Header = ({ siteTitle }) => {
   const auth = useContext(AuthContext)
   const [width, setWidth] = useState(window.innerWidth)
   const [open, setOpen] = useState(false)
+  const [click, setClick] = useState(0)
 
 
   const logoutHandler = () => {
@@ -36,6 +37,8 @@ const Header = ({ siteTitle }) => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+ 
 
   const loggedNav = () => {
     return (
@@ -95,9 +98,9 @@ const Header = ({ siteTitle }) => {
         >
           {siteTitle}
         </Link>
-        {width > 750 ? (auth.isAuthenticated ? loggedNav() : unloggedNav()) : <BurgerMenu setOpen = {setOpen} open = {open}/>}
+        {width > 750 ? (auth.isAuthenticated ? loggedNav() : unloggedNav()) : <BurgerMenu setOpen = {setOpen} open = {open} setClick = {setClick}/>}
       </div>
-      {open && width < 750 ? <BurgerSlider open = {open}>
+      {width < 750 ? <BurgerSlider open = {open} click = {click}>
         {(auth.isAuthenticated ? loggedNav() : unloggedNav())}
       </BurgerSlider> : null}
     </header>

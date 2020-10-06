@@ -1,15 +1,25 @@
 .burger-slider-wrap {
     
-    width: 0px;
+    width: 100%;
+    height: 0;
     margin-left: auto;
     position: fixed;
-
     background: rgba(0, 0, 0, 0.8);
     z-index: 200;
+    
+    &.closed {
+        animation: 0.9s dropup;
+
+    }
+
+   
+    
 
     &.open{
         width: 100%;
         height: calc(100% - 80px);
+        
+ 
 
     }
 }
@@ -24,11 +34,38 @@
 
 .burger-slider {
     float: right;
-    transition: all ease-in-out 0.3s;
-    width: 50%;
     background-color: rebeccapurple;
     height: 100%;
-    animation: 0.5s slidein;
+    width: 0%;
+
+    
+    &.closed {
+        animation: 0.5s slideout;
+        width: 0%;
+
+        
+    }
+
+
+    &.open {
+
+        animation: 1s slidein;
+        width: 50%;
+    }
+
+
+}
+
+
+
+@keyframes slideout {
+    0% {
+        width: 50%;
+    }
+
+    100% {
+        width: 0%;
+    }
 }
 
 @keyframes slidein {
@@ -45,4 +82,18 @@
     100% {
     width: 50%;
     }
+  }
+
+ @keyframes dropup {
+     0% {
+        height: calc(100vh - 80px)
+     }
+
+      70%{ 
+          height: calc(100vh - 80px);
+      }
+
+      100% {
+          height: 0px;
+      }
   }

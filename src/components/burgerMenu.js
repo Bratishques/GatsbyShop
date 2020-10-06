@@ -2,10 +2,11 @@ import React, { useState } from "react"
 import menuIcon from '../images/menu.svg'
 
 const BurgerMenu = (props) => {
-    const {setOpen, open} = props
-    const clickHandler = () => {
+    const {setOpen, open, setClick} = props
+    const clickHandler = async () => {
         setOpen(!open)
         console.log("I'm clicked")
+        setClick(1)
     }
     
     return (
