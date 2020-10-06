@@ -1,0 +1,48 @@
+.burger-slider-wrap {
+    
+    width: 0px;
+    margin-left: auto;
+    position: fixed;
+
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 200;
+
+    &.open{
+        width: 100%;
+        height: calc(100% - 80px);
+
+    }
+}
+
+.burger-children-grid {
+    padding-left: 40px;
+    padding-top: 40px;
+    display: grid;
+    row-gap: 20px;
+    width: 50%;
+}
+
+.burger-slider {
+    float: right;
+    transition: all ease-in-out 0.3s;
+    width: 50%;
+    background-color: rebeccapurple;
+    height: 100%;
+    animation: 0.5s slidein;
+}
+
+@keyframes slidein {
+    0% {
+      margin-right: 100%;
+      width: 300%; 
+    }
+  
+    50% {
+      margin-right: 0%;
+      width: 100%;
+    }
+
+    100% {
+    width: 50%;
+    }
+  }

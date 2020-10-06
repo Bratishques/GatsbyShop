@@ -8,7 +8,7 @@
 .ware {
     display: flex;
     flex-direction: column;
-    width: 250px;
+    max-width: 250px;
     align-items: center;
     padding: 20px 20px;
     background-color: honeydew;
@@ -19,7 +19,16 @@
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
+    text-align: left;
+    width: 100%;
 
+}
+
+.ware-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    min-width: 60px;
 }
 
 @media(max-width: 700px) {
@@ -32,10 +41,37 @@
     .ware {
         display: flex;
         flex-direction: column;
-        width: 140px;
+        width: 200px;
         align-items: center;
         padding: 20px 20px;
         background-color: honeydew;
         justify-content: space-between;
     }
+
+    .ware-pricename-grid {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+@media(max-width: 500px) {
+
+    .ware {
+        display: flex;
+        flex-direction: column;
+        width: 130px;
+        align-items: center;
+        padding: 20px 20px;
+        background-color: honeydew;
+        justify-content: space-between;
+    }
+
+    .ware-buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+    }
+    
 }

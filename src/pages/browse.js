@@ -44,9 +44,9 @@ const Browse = () => {
   const mapWares = () => {
     return (
       <div className="browse-wrap">
-        {wares.map((a) => {
+        {wares.map((a,i) => {
           return (
-              <Ware a={a}/>
+              <Ware a={a} key= {i}/>
           )
         }) }
       </div>

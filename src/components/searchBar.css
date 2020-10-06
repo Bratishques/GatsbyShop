@@ -1,0 +1,18 @@
+.search-bar-wrap {
+    display: inline-block;
+    position: relative
+}
+
+.search-bar-flex {
+    display: flex;
+    width: 30vw;
+    min-width: 300px;
+    position: relative;
+}
+
+@media(max-width: 700px) {
+    .search-bar-wrap {
+        display: block;
+        position: relative
+    }
+}

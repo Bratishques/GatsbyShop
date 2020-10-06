@@ -1,6 +1,7 @@
 .nav-wrap {
     display: flex;
-    float: right;
+    align-items: center;
     min-width: 500px;
+    margin-bottom: 0px;
     justify-content: space-between;
 }

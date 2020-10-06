@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import config from "../config"
 import { useHttp } from "../hooks/http.hook"
 import SearchBarResult from "./searchBarResult"
+import "./searchBar.css"
 
 const SearchBar = props => {
   const [searchValue, setSearchValue] = useState("")
@@ -40,20 +41,9 @@ const SearchBar = props => {
 
   return (
     <div
-      className="search-bar-wrap"
-      style={{
-        display: "inline-block",
-        position: "relative"
-      }}
-    >
+      className="search-bar-wrap">
       <div
         className="search-bar-flex"
-        style={{
-          display: "flex",
-          width: "30vw",
-          minWidth: "300px",
-          position: "relative",
-        }}
       >
         <input
           type="text"

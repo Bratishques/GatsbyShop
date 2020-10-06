@@ -1,19 +1,41 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { useAuth } from "../hooks/auth.hook"
 import { AuthContext } from "../context/authContext"
 import StyledLink from "../components/styledLink"
 import "./header.css"
 import CartCount from "./cartCount"
+import BurgerMenu from "./burgerMenu"
+import BurgerSlider from "./burgerSlider"
 
 const Header = ({ siteTitle }) => {
   const { logout } = useAuth()
   const auth = useContext(AuthContext)
+  const [width, setWidth] = useState(window.innerWidth)
+  const [open, setOpen] = useState(false)
+
 
   const logoutHandler = () => {
     logout()
   }
+
+  useEffect(() => {
+
+    function handleResize() {
+
+      setWidth(window.innerWidth);
+    }
+    
+
+    window.addEventListener("resize", handleResize);
+    
+
+    handleResize();
+    
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const loggedNav = () => {
     return (
@@ -55,7 +77,11 @@ const Header = ({ siteTitle }) => {
         style={{
           margin: `0 auto`,
           maxWidth: 960,
+          display: "flex",
+          justifyContent: "space-between",
           padding: `1.45rem 1.0875rem`,
+          alignItems: "center",
+          position: "relative"
         }}
       >
         <Link
@@ -64,12 +90,16 @@ const Header = ({ siteTitle }) => {
             fontSize: `30px`,
             color: `white`,
             textDecoration: `none`,
+            fontFamily: `Roboto`,
           }}
         >
           {siteTitle}
         </Link>
-        {auth.isAuthenticated ? loggedNav() : unloggedNav()}
+        {width > 750 ? (auth.isAuthenticated ? loggedNav() : unloggedNav()) : <BurgerMenu setOpen = {setOpen} open = {open}/>}
       </div>
+      {open && width < 750 ? <BurgerSlider open = {open}>
+        {(auth.isAuthenticated ? loggedNav() : unloggedNav())}
+      </BurgerSlider> : null}
     </header>
   )
 }

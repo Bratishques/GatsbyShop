@@ -1,5 +1,7 @@
 import { createStore as reduxCreateStore } from "redux"
 import {loadState} from "../components/localstorage"
+import {logger, crashReporter} from "./logger"
+import { applyMiddleware } from "redux"
 
 export const reducer = (state, action) => {
   let ware = action.payload
@@ -57,5 +59,5 @@ const persistedState = loadState()
 
 
 
-const createStore =  () => reduxCreateStore(reducer, persistedState)
+const createStore =  () => reduxCreateStore(reducer, persistedState, applyMiddleware(logger, crashReporter))
 export default createStore

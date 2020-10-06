@@ -7,7 +7,6 @@ import "./cart.css"
 
 const Cart = (props) => {
 
-    console.log(props)
     const auth = useContext(AuthContext)
 
     const getTotal = () => {
@@ -16,7 +15,7 @@ const Cart = (props) => {
             
             let price = item.count * item.ware.price
             price = Number(price).toFixed(2)
-            console.log(price)
+           
             total += Number(price)
         }
         return Number(total).toFixed(2)
@@ -30,8 +29,8 @@ const Cart = (props) => {
         <div><h3>Here is your cart</h3></div>
         {props.cart.length > 0 ?
         <div  className={`cart-wares-grid`}>
-        {props.cart.map(a=> {
-            return <CartWare {...a}/>
+        {props.cart.map((a,i) => {
+            return <CartWare {...a} key = {i}/>
         })}
         </div> : <div><h4> Cart is empty</h4></div>}
         <div>And here is the total: {getTotal()} USD</div>

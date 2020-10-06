@@ -1,7 +1,6 @@
 .browse-wrap {
     display: grid;
-    grid-template: "a b c";
-    column-gap: 70px;
+    grid-template-columns: repeat(3, minmax(0, 33%));
     row-gap: 50px;
     justify-items: center;
 }
@@ -12,10 +11,17 @@
     margin-bottom: 50px;
 }
 
-@media(max-width: 1024px) {
+@media(max-width: 900px) {
     .browse-wrap{
         grid-template: "a b";
-        column-gap: 20px;
+        column-gap: 10px;
+    }
+
+    .browse-top {
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 50px;
     }
 }
 
