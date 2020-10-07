@@ -21,7 +21,9 @@ const BurgerSlider = ({children, open, click}) => {
     return <div className = {`burger-slider-wrap ${click > 0 ? (open ? `open` : `closed`) : null} `}>
         <div className = {`burger-slider ${click > 0 ? (open ? `open` : `closed`) : null} ` }>
         <div className = {`burger-children-grid`}>
-       {children.props.children}
+       {children.props.children.map((a,i) => {
+           return <div key = {i}>{a}</div>
+       })}
        </div>
        </div>
     </div>
