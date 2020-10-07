@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from "react"
 import { useHttp } from "../hooks/http.hook"
 import config from "../config"
 import { connect } from "react-redux"
+import { useAuth } from "../hooks/auth.hook"
 export const AuthContext = createContext()
 export const isBrowser = () => typeof window !== "undefined"
 
@@ -17,6 +18,7 @@ const GlobalContextProvider = ({ children, loadCart, cart }) => {
   const [isAuthenticated, setisAuthenticated] = useState(!!data.token)
   const [idee, setIdee] = useState(null)
   const [admin, setAdmin] = useState(false)
+  const {logout} = useAuth()
   const { baseUrl } = config
 
   useEffect(() => {
@@ -39,6 +41,7 @@ const GlobalContextProvider = ({ children, loadCart, cart }) => {
         if (verify.message === "invalid") {
           console.log(verify.message)
           localStorage.removeItem(storageName)
+          logout()
         }
       }
     }

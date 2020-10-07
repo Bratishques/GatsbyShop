@@ -41,7 +41,7 @@
     .ware {
         display: flex;
         flex-direction: column;
-        width: 200px;
+        width: auto;
         align-items: center;
         padding: 20px 20px;
         background-color: honeydew;
@@ -60,7 +60,7 @@
     .ware {
         display: flex;
         flex-direction: column;
-        width: 130px;
+        width: auto;
         align-items: center;
         padding: 20px 20px;
         background-color: honeydew;

@@ -1,8 +1,8 @@
 .browse-wrap {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 33%));
+    grid-template-columns: repeat(3, 1fr);
     row-gap: 50px;
-    justify-items: center;
+    justify-items: stretch;
 }
 
 .browse-top {
@@ -13,7 +13,7 @@
 
 @media(max-width: 900px) {
     .browse-wrap{
-        grid-template: "a b";
+        grid-template-columns: 1fr 1fr;
         column-gap: 10px;
     }
 

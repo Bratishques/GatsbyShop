@@ -15,36 +15,45 @@ const Header = ({ siteTitle }) => {
   const [width, setWidth] = useState(window.innerWidth)
   const [open, setOpen] = useState(false)
   const [click, setClick] = useState(0)
-
+  const [hiddenHeader, setHiddenHeader] = useState(false)
 
   const logoutHandler = () => {
     logout()
   }
 
+  const header = document.getElementById("header")
+
+
+  let prevScrollpos = window.pageYOffset;
+  window.onscroll = function() {
+    console.log(window.scrollY)
+    var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    
+    setHiddenHeader(false)
+  } else {
+    setHiddenHeader(true)
+  }
+  prevScrollpos = currentScrollPos;
+
+  }
   useEffect(() => {
-
     function handleResize() {
-
-      setWidth(window.innerWidth);
+      setWidth(window.innerWidth)
     }
-    
 
-    window.addEventListener("resize", handleResize);
-    
+    window.addEventListener("resize", handleResize)
 
-    handleResize();
-    
+    handleResize()
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
- 
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   const loggedNav = () => {
     return (
       <ul className="nav-wrap">
         <StyledLink to="/cart">
-         <CartCount></CartCount>
+          <CartCount></CartCount>
         </StyledLink>
         <StyledLink to="/categories">Categories</StyledLink>
         <StyledLink to="/browse">Browse</StyledLink>
@@ -70,21 +79,30 @@ const Header = ({ siteTitle }) => {
   }
 
   return (
-    <header
-      style={{
-        background: `rebeccapurple`,
-        marginBottom: `1.45rem`,
-      }}
-    >
-      <div
+<div>
+
+<div>
+  {width < 750 ? (
+          <BurgerSlider open={open} click={click}>
+            {auth.isAuthenticated ? loggedNav() : unloggedNav()}
+          </BurgerSlider>
+        ) : null}
+        </div>
+      <header id = "header"
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
+          width: "100%",
           display: "flex",
           justifyContent: "space-between",
-          padding: `1.45rem 1.0875rem`,
+          height: `${hiddenHeader ? "0px" : `88px`}`,
+          padding: `${width > 750 ? "0px 10rem" : "0px 2.5rem"}`,
           alignItems: "center",
-          position: "relative"
+          position: 'fixed',
+          background: `rebeccapurple`,
+          zIndex: "200",
+          top: "0%",
+          transition: "0.3s all",
+          boxSizing: "border-box",
+          overflow: "hidden"
         }}
       >
         <Link
@@ -98,12 +116,21 @@ const Header = ({ siteTitle }) => {
         >
           {siteTitle}
         </Link>
-        {width > 750 ? (auth.isAuthenticated ? loggedNav() : unloggedNav()) : <BurgerMenu setOpen = {setOpen} open = {open} setClick = {setClick}/>}
-      </div>
-      {width < 750 ? <BurgerSlider open = {open} click = {click}>
-        {(auth.isAuthenticated ? loggedNav() : unloggedNav())}
-      </BurgerSlider> : null}
-    </header>
+        {width > 900 ? (
+          auth.isAuthenticated ? (
+            loggedNav()
+          ) : (
+            unloggedNav()
+          )
+        ) : (
+          <BurgerMenu setOpen={setOpen} open={open} setClick={setClick} />
+        )}
+        
+      
+    
+</header>
+
+</div>
   )
 }
 
