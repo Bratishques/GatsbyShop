@@ -102,7 +102,7 @@ const Header = ({ siteTitle }) => {
           display: "flex",
           justifyContent: "space-between",
           height: `${hiddenHeader ? "0px" : `88px`}`,
-          padding: `${width > 750 ? "0px 10rem" : "0px 2.5rem"}`,
+          padding: `${`0px 50px`}`,
           alignItems: "center",
           position: 'fixed',
           background: `rebeccapurple`,
