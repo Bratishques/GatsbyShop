@@ -31,7 +31,7 @@ export const useAuth = () => {
     setToken(null)
     setUserId(null)
     localStorage.removeItem(storageName)
-    auth.setisAuthenticated(false)
+    auth.setIsAuthenticated(false)
     auth.setIdee(null)
     auth.setAdmin(false)
   }, [])

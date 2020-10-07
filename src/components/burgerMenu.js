@@ -11,7 +11,7 @@ const BurgerMenu = (props) => {
     
     return (
         <div className = {`burger-menu-trigger`} onClick = {clickHandler}>
-        <img src={menuIcon} style = {{
+        <img src="https://gatsbyshop.hb.bizmrg.com/menu.svg" style = {{
             width: "30px",
             height: "30px",
             marginBottom: "0"

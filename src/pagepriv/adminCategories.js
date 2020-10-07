@@ -2,6 +2,8 @@ import React from "react"
 import AdminCategory from "../components/adminCategory"
 
 const AdminCategories = () => {
+
+    
     return (
         <div>
             <AdminCategory/>
