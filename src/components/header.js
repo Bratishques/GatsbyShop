@@ -37,7 +37,7 @@ const Header = ({ siteTitle }) => {
   if (prevScrollpos > currentScrollPos) {
     
     setHiddenHeader(false)
-  } else {
+  } else if (!open) {
     setHiddenHeader(true)
   }
   prevScrollpos = currentScrollPos;
@@ -87,7 +87,18 @@ const Header = ({ siteTitle }) => {
   }
 
   return (
-<div>
+<div style = {{
+  height: `${hiddenHeader ? "0px" : `88px`}`,
+  width: "100%",
+  background: `rebeccapurple`,
+  display: "flex",
+  justifyContent: "center",
+  position: 'fixed',
+  top: "0%",
+  transition: "0.3s all",
+  zIndex: "200",
+
+}}>
 
 <div>
   {width < 750 ? (
@@ -102,12 +113,11 @@ const Header = ({ siteTitle }) => {
           display: "flex",
           justifyContent: "space-between",
           height: `${hiddenHeader ? "0px" : `88px`}`,
-          padding: `${`0px 50px`}`,
+          padding: `${`0px 10px`}`,
+          maxWidth: `960px`,
           alignItems: "center",
-          position: 'fixed',
           background: `rebeccapurple`,
           zIndex: "200",
-          top: "0%",
           transition: "0.3s all",
           boxSizing: "border-box",
           overflow: "hidden"
