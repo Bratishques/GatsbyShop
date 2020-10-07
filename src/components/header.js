@@ -12,7 +12,12 @@ import BurgerSlider from "./burgerSlider"
 const Header = ({ siteTitle }) => {
   const { logout } = useAuth()
   const auth = useContext(AuthContext)
-  const [width, setWidth] = useState(window.innerWidth)
+  
+ 
+    const [width, setWidth] = useState(typeof window !== `undefined` ? window.innerWidth : 1920 )
+
+
+
   const [open, setOpen] = useState(false)
   const [click, setClick] = useState(0)
   const [hiddenHeader, setHiddenHeader] = useState(false)
@@ -21,10 +26,11 @@ const Header = ({ siteTitle }) => {
     logout()
   }
 
-  const header = document.getElementById("header")
 
 
-  let prevScrollpos = window.pageYOffset;
+  let prevScrollpos = typeof window !== `undefined` ? window.pageYOffset : 0;
+
+  if (typeof window !== `undefined`) {
   window.onscroll = function() {
     console.log(window.scrollY)
     var currentScrollPos = window.pageYOffset;
@@ -37,6 +43,8 @@ const Header = ({ siteTitle }) => {
   prevScrollpos = currentScrollPos;
 
   }
+
+}
   useEffect(() => {
     function handleResize() {
       setWidth(window.innerWidth)
