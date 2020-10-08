@@ -8,9 +8,9 @@ const AdminWare = props => {
   const [isUpdating, setIsUpdating] = useState(false)
   const [loading, setLoadng] = useState(false)
   const { name, image, price, wares, setWares, _id } = props
-  const {baseUrl} = config
+  const { baseUrl } = config
   const openModal = () => {
-      setIsUpdating(true)
+    setIsUpdating(true)
   }
 
   const deleteProduct = async () => {
@@ -35,20 +35,33 @@ const AdminWare = props => {
     setWares(newWares)
   }
 
-
   return (
     <div>
       <UpdateWareModal
         {...props}
         isUpdating={isUpdating}
         setIsUpdating={setIsUpdating}
-        setWares = {setWares}
-        wares = {wares}
+        setWares={setWares}
+        wares={wares}
       />
       <div className="ware">
         <img className="wareImage" src={image} />
-        <div className="price">{price}</div>
-        <div >{name} <button onClick={openModal} disabled={loading} >Update</button> <button onClick={deleteProduct} disabled={loading}>Delete</button></div>
+        <div className="ware-pricename-grid">
+
+          <div className="ware-pricename-name">
+            <h4 style={{marginBottom: "0"}}>{name}</h4>
+          </div>
+          <div className="ware-pricename-price">{price}</div>
+        </div>
+        <div className={`ware-buttons`} style={{ width: "auto" }}>
+          {" "}
+          <button onClick={openModal} disabled={loading}>
+            Update
+          </button>{" "}
+          <button onClick={deleteProduct} disabled={loading}>
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   )

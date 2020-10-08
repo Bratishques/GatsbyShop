@@ -1,7 +1,9 @@
 import React, { useState, useContext } from "react"
+import config from "../config"
 import { AuthContext } from "../context/authContext"
 
 export const ImageModal = props => {
+  const {baseUrl} = config
   const {idee} = useContext(AuthContext)
   const [file, setFile] = useState(null)
   const { isUploading, setIsUploading } = props
@@ -27,7 +29,7 @@ export const ImageModal = props => {
     data.append('id',idee)
     console.log(data)
     setFile(null)
-    const response = await fetch(`/api/profile/setimg/${idee}`, {method: "POST", body: data}, )
+    const response = await fetch(`${baseUrl}api/profile/setimg/${idee}`, {method: "POST", body: data}, )
     const respData = await response.json()
     console.log(respData)
     window.location.reload()

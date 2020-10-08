@@ -16,6 +16,7 @@
 }
 
 .ware-pricename-grid {
+    height: 100px;
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
@@ -39,6 +40,7 @@
         margin: 0;
     }
     .ware {
+        
         display: flex;
         flex-direction: column;
         width: auto;

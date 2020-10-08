@@ -65,7 +65,7 @@ const Header = ({ siteTitle }) => {
         </StyledLink>
         <StyledLink to="/categories">Categories</StyledLink>
         <StyledLink to="/browse">Browse</StyledLink>
-        <StyledLink to={`/app/profile/${auth.idee}`}>Profile</StyledLink>
+        <StyledLink to={`/app/profile`}>Profile</StyledLink>
         {auth.admin && <StyledLink to={`/admin/main`}>Admin Panel</StyledLink>}
         <button onClick={logoutHandler}>Logout</button>
       </ul>
@@ -113,7 +113,7 @@ const Header = ({ siteTitle }) => {
           display: "flex",
           justifyContent: "space-between",
           height: `${hiddenHeader ? "0px" : `88px`}`,
-          padding: `${`0px 10px`}`,
+          padding: `${`0px 20px`}`,
           maxWidth: `960px`,
           alignItems: "center",
           background: `rebeccapurple`,

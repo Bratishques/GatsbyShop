@@ -40,7 +40,6 @@ const GlobalContextProvider = ({ children, loadCart, cart }) => {
         }
         if (verify.message === "invalid") {
           console.log(verify.message)
-          localStorage.removeItem(storageName)
           logout()
         }
       }

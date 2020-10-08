@@ -12,7 +12,7 @@ const App = () => (
   <Layout>
     <Router>
     <PrivateRoute path="/app/page2" component={SecondPage}/>
-    <PrivateRoute path="/app/profile/:id" component={Profile}/>
+    <PrivateRoute path="/app/profile" component={Profile}/>
     <ItemPage path = "/app/ware/:id"/>
     <AdminRoute path="/admin/main" component={AdminPage}/>
     </Router>

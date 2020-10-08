@@ -1,8 +1,9 @@
 .browse-wrap {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     row-gap: 50px;
     justify-items: stretch;
+    align-items: stretch;
 }
 
 .browse-top {
