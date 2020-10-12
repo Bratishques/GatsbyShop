@@ -15,7 +15,6 @@ export const UpdateWareModal = props => {
     setIsUpdating,
     category,
     wares,
-    id,
     setWares
   } = props
   const [loading, setLoading] = useState(false)
@@ -32,7 +31,8 @@ export const UpdateWareModal = props => {
       isValid: true,
     },
     Category: {
-      value: category.name,
+      value: () => { if (category.name) return category.name 
+        else return ""},
       isValid: true,
     },
     Price: {

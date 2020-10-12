@@ -6,7 +6,7 @@ import { applyMiddleware } from "redux"
 export const reducer = (state, action) => {
   let ware = action.payload
 
-  if (action.type == `LOAD_CART`) {
+  if (action.type === `LOAD_CART`) {
     return Object.assign({}, state, {
       cart: [...ware]
     })
@@ -47,6 +47,12 @@ export const reducer = (state, action) => {
           }
           return obj
         }).filter(obj => Object.keys(obj).length !== 0)
+    })
+  }
+
+  if (action.type === "CLEAR_CART") {
+    return Object.assign({}, state, {
+      cart: []
     })
   }
 

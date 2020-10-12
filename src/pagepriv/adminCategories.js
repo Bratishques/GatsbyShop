@@ -26,7 +26,7 @@ const {baseUrl} = config
     return (
         <div>
         {categories.map((a,i) => {
-            return <AdminCategory name = {a} key = {i}/>
+            return <AdminCategory name = {a} key = {i} categories = {categories} setCategories = {setCategories}/>
         })}
             
             categories must be here

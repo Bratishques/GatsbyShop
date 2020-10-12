@@ -40,7 +40,9 @@ const GlobalContextProvider = ({ children, loadCart, cart }) => {
         }
         if (verify.message === "invalid") {
           console.log(verify.message)
-          logout()
+          setisAuthenticated(false)
+          setIdee(null)
+          setAdmin(false)
         }
       }
     }

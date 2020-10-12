@@ -75,7 +75,10 @@ const Categories = () => {
     return (
       <Layout>
   <form>
-  <div className="checkbuttons">
+  <div className="checkbuttons" style = {{
+    display: "grid",
+    gridAutoFlow: "row"
+  }}>
   {!loading && categories.map(a => {
     return (
       <label>

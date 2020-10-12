@@ -37,8 +37,12 @@ export const saveState = async state => {
       })
       const response = await data.json()
       console.log(response)
+      localStorage.removeItem('state')
     }
+
+    else {
     localStorage.setItem("state", serializedState)
+  }
 
 
 

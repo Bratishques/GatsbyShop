@@ -61,8 +61,8 @@ const AdminWares = () => {
             <br/>
             Browse and Modify
             <div className="browse-wrap">
-                {wares.map(a => {
-                    return <AdminWare {...a} wares = {wares} setWares = {setWares} />
+                {wares.map((a, i) => {
+                    return <AdminWare {...a} wares = {wares} setWares = {setWares} key = {i}/>
                 })}
             </div>
             <Observer {...options}>
