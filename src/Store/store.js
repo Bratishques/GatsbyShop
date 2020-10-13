@@ -50,7 +50,7 @@ export const reducer = (state, action) => {
     })
   }
 
-  if (action.type === "CLEAR_CART") {
+  if (action.type === "CART_EMPTY") {
     return Object.assign({}, state, {
       cart: []
     })
