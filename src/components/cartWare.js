@@ -25,8 +25,12 @@ const CartWare = props => {
           <h4 className={`cart-ware-name`}>{name}</h4> costs {price}
         </div>
         <div className={`cart-ware-buttons-div`}>
-          <button onClick={increaseAmount} disabled = {notInStock()}>+</button> { <Price  price = {preCount()}/>}
-          <button onClick={decreaseAmount}>-</button>
+          <button onClick={increaseAmount} disabled = {notInStock()} style ={{
+            marginRight: "10px"
+          }}>+</button> { <Price  price = {preCount()}/>}
+          <button onClick={decreaseAmount} style ={{
+            marginLeft: "10px"
+          }}>-</button>
         </div>
       </div>
       <div className={`cart-ware-count-flex`}>{count}</div>

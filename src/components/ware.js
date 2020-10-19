@@ -33,9 +33,19 @@ const Ware = ({ addItem, a, cart, increaseAmount, decreaseAmount}) => {
         if (find()) {
             return (
             <div className = {`ware-buttons`}>
-            <button onClick={increaseAmount}>{`+`}</button>
-            {amount()}
-            <button onClick={decreaseAmount}>{`-`}</button>
+            <button onClick={increaseAmount} style= {{
+                width: "35px",
+                padding: "5px",
+                fontSize: "20px"
+
+            }}>{`+`}</button>
+            <div>{amount()}</div>
+            <button onClick={decreaseAmount} style= {{
+                width: "35px",
+                padding: "5px",
+                fontSize: "20px"
+
+            }}>{`-`}</button>
             </div>
             )
         }
@@ -53,9 +63,11 @@ const Ware = ({ addItem, a, cart, increaseAmount, decreaseAmount}) => {
         }}>
         <img className = "wareImage" src={a.image} alt={a.name}/>
         <div className="ware-pricename-grid">
-        <div className = "ware-pricename-name" ><h4 style={{
-            marginBottom:"0"
-        }}>{a.name}</h4></div>
+        <div className = "ware-pricename-name" ><span style={{
+            marginBottom:"0",
+            fontSize: "20px",
+            fontStyle: "medium"
+        }}>{a.name}</span></div>
         <Price className = "ware-pricename-price" price = {a.price}/>
         </div>
         <div>

@@ -20,6 +20,7 @@ export const UpdateWareModal = props => {
   const [loading, setLoading] = useState(false)
   const { baseUrl } = config
   console.log(description)
+  const catName = category ? category.name : ""
 
   const defForm = {
     Name: {
@@ -31,8 +32,7 @@ export const UpdateWareModal = props => {
       isValid: true,
     },
     Category: {
-      value: () => { if (category.name) return category.name 
-        else return ""},
+      value: catName,
       isValid: true,
     },
     Price: {

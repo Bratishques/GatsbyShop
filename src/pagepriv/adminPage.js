@@ -1,11 +1,9 @@
 import React, { useContext } from "react"
-import { AuthContext } from "../context/authContext"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import "./adminPage.css"
 
 const AdminPage = () => {
-  const auth = useContext(AuthContext)
 
   const AdminLink = styled(Link)`
     text-decoration: none;

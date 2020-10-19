@@ -25,12 +25,9 @@
 
 }
 
-.ware-pricename-name {
-
-}
-
 .ware-buttons {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 50%;
     min-width: 60px;

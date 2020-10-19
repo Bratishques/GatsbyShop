@@ -13,7 +13,7 @@
 
 .auth_form {
     display: grid;
-    grid-template-rows: "a";
+    grid-template-columns: 40px 1fr;
 }
 
 .auth-buttons {
@@ -37,4 +37,16 @@
 .auth-notifications.registered {
     background-color: rgba(255, 253, 144, 0.959);
     color: inherit;
+}
+
+.auth-input-pre {
+    width: 40px;
+    background-color: rgb(154, 93, 214);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 100;
+    border-radius: 10px 0px 0 10px;
 }

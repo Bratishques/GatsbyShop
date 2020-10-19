@@ -5,6 +5,29 @@ import { useAuth } from "../hooks/auth.hook"
 import "./auth.css"
 import config from "../config"
 import { connect } from "react-redux"
+import styled from "styled-components"
+import { Icon, InlineIcon } from '@iconify/react';
+import mailOutlined from '@iconify/icons-ant-design/mail-outlined';
+import bxsLock from '../images/lock.svg'
+
+const AuthInput = styled.input`
+padding: 10px 20px;
+border-radius: 10px;
+background-color: rebeccapurple;
+font-size: 16px;
+font-style: normal;
+font-family: Roboto;
+border: none;
+outline: 0;
+color: white;
+margin-left: -10px;
+width: auto !important;
+::placeholder{
+  color: white;
+  opacity: 0.8
+}
+
+`
 
 const Auth = () => {
   const {baseUrl} = config
@@ -30,11 +53,6 @@ const Auth = () => {
     setCounter(counter + 1)
   }
 
-  const greetingMessage = () => {
-    if (!auth.isAuthenticated) {
-      return <div onClick={countAdmin}>Please log in!</div>
-    }
-  }
 
   const registerHandler = async () => {
     try {
@@ -131,28 +149,36 @@ const Auth = () => {
     setAdmin(!admin)
   }
 
+
+
+
   return (
     <div>
       <h2>Auth page</h2>
-      {greetingMessage()}
       <div className="auth-forms">
         <div className="auth_form">
-          Email:{" "}
-          <input
+        <div className="auth-input-pre">
+        <Icon icon={mailOutlined} style={{color: '#ffffff', fontSize: '24px'}} />
+        </div>
+          <AuthInput
             id={"email"}
             type={"text"}
             name={"email"}
-            className="auth-input"
+            placeholder="Email"
             onChange={changeHandler}
           />
         </div>
         <div className="auth_form">
-          Password: <br />
-          <input
+        <div className="auth-input-pre">
+        <img src={bxsLock} style = {{
+          marginBottom: "0px"
+        }}/>
+        </div>
+          <AuthInput
             id="password"
             type={"password"}
             name={"password"}
-            className="auth-input"
+            placeholder="Password"
             onChange={changeHandler}
           />
         </div>

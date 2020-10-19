@@ -16,8 +16,9 @@ const AddWareImage = props => {
       {preview()}
       <label className ="file-label" htmlFor="file">
         Select file
-      </label>
+      
       <input type="file" onChange={changeFile} id="file" />
+      </label>
     </div>
   )
 }

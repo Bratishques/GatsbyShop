@@ -616,6 +616,29 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+
+button {
+  opacity: 0.9;
+  background-color: rebeccapurple;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:active {
+  border: none;
+  outline: 0;
+  transform: scale(0.9);
+}
+button:focus {
+  outline: 0;
+}
+button:hover{
+  opacity: 1;
+}
+
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
