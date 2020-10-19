@@ -3,6 +3,9 @@ import config from "../config"
 import { useHttp } from "../hooks/http.hook"
 import SearchBarResult from "./searchBarResult"
 import "./searchBar.css"
+import search from "../images/search.svg"
+
+
 
 const SearchBar = props => {
   const [searchValue, setSearchValue] = useState("")
@@ -11,6 +14,8 @@ const SearchBar = props => {
   const [results, setResults] = useState([])
   const {baseUrl} = config
   const {request} = useHttp()
+
+  const borderStyle = "2px solid rebeccapurple"
 
   const searchChangeHandler = e => {
     setSearchValue(e.target.value)
@@ -45,14 +50,39 @@ const SearchBar = props => {
       <div
         className="search-bar-flex"
       >
+      <div
+      style = {{
+        borderTop: borderStyle,
+        borderBottom: borderStyle,
+        borderLeft: borderStyle,
+        borderRadius: "7px 0 0 7px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "3px",
+        fontColor: "rebeccapurple"
+      }}
+      ><img src={search} style={{
+        marginBottom:"0",
+        width: "25px"
+      }}></img></div>
         <input
+        style = {{
+          padding: "3px 10px",
+          border:"none",
+          outline:0,
+          borderRadius: "0 7px 7px 0",
+          borderTop: borderStyle,
+          borderRight: borderStyle,
+          borderBottom: borderStyle
+        }
+        }
           type="text"
           value={searchValue}
           onChange={searchChangeHandler}
           onBlur = {blurHandler}
           onFocus = {focusHandler}
-        />
-        <button>Search</button>
+        ></input>
       </div>
      { dropOpen && <div
         className="search-bar-dropper-wrap"
@@ -62,7 +92,8 @@ const SearchBar = props => {
           backgroundColor: "whitesmoke",
           width: "100%",
           display: "grid",
-          gridTemplateRows: "a"
+          gridTemplateRows: "a",
+          zIndex: "100"
 
         }}
       > {dropLoading ? <div

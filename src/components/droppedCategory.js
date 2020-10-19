@@ -4,7 +4,9 @@ const DroppedCategory = props => {
   const { catName, changeForm } = props
   return (
 
-    <button className="category-dropped" onClick={changeForm} value = {catName}>
+    <button className="category-dropped" onClick={changeForm} value = {catName} style={{
+      color:"black"
+    }}>
       {catName}
     </button>
 

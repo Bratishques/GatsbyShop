@@ -195,10 +195,10 @@ const Auth = () => {
         
       <div className="auth-buttons">
         <button onClick={loginHandler} disabled={locked}>
-          Login
+          Sign in
         </button>
         <button onClick={registerHandler} disabled={locked}>
-          Register
+         Sign up
         </button>
         
       </div>

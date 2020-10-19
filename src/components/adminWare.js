@@ -45,15 +45,24 @@ const AdminWare = props => {
         wares={wares}
       />
       <div className="ware">
-        <img className="wareImage" src={image} />
-        <div className="ware-pricename-grid">
+        <img className="ware-image" src={image} />
+        <div className="ware-pricename-grid" style={{
+          marginTop:"-30px",
+          marginBottom: "10px"
+        }}>
 
           <div className="ware-pricename-name">
             <h4 style={{marginBottom: "0"}}>{name}</h4>
           </div>
           <div className="ware-pricename-price">{price}</div>
         </div>
-        <div className={`ware-buttons`} style={{ width: "auto" }}>
+        <div style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          backgroundColor: "none",
+          top: "0"
+        }}>
           {" "}
           <button onClick={openModal} disabled={loading}>
             Update

@@ -25,14 +25,18 @@ const Ware = ({ addItem, a, cart, increaseAmount, decreaseAmount}) => {
         
         if (!find()) {
             return (
-            <>
-            <button onClick={addItem}>{`ADD TO CART`}</button>
-            </>
+            <div className={`ware-buttons-wrap`}>
+            <button onClick={addItem} style={{
+                width: "100%"
+            }}>{`Add to Cart`}</button>
+            </div>
             )
         }
         if (find()) {
             return (
-            <div className = {`ware-buttons`}>
+            <div className={`ware-buttons-wrap`}>
+            <div 
+            className = {`ware-buttons`}>
             <button onClick={increaseAmount} style= {{
                 width: "35px",
                 padding: "5px",
@@ -46,6 +50,7 @@ const Ware = ({ addItem, a, cart, increaseAmount, decreaseAmount}) => {
                 fontSize: "20px"
 
             }}>{`-`}</button>
+            </div>
             </div>
             )
         }
@@ -61,21 +66,23 @@ const Ware = ({ addItem, a, cart, increaseAmount, decreaseAmount}) => {
             alignItems: `center`,
             textAlign: `center`
         }}>
-        <img className = "wareImage" src={a.image} alt={a.name}/>
+        <img className = "ware-image" src={a.image} alt={a.name}></img>
+        </Link>
+        {wareButton()}
         <div className="ware-pricename-grid">
         <div className = "ware-pricename-name" ><span style={{
             marginBottom:"0",
-            fontSize: "20px",
-            fontStyle: "medium"
+            fontSize: "15px",
+            fontStyle: "normal"
         }}>{a.name}</span></div>
         <Price className = "ware-pricename-price" price = {a.price}/>
         </div>
         <div>
         </div>
-        </Link>
+       
         
 
-        {wareButton()}
+        
 
         
         
