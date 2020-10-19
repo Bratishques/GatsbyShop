@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { connect } from "react-redux"
+import Price from "./price"
 import "./ware.css"
 const Ware = ({ addItem, a, cart, increaseAmount, decreaseAmount}) => {
 
@@ -52,8 +53,10 @@ const Ware = ({ addItem, a, cart, increaseAmount, decreaseAmount}) => {
         }}>
         <img className = "wareImage" src={a.image} alt={a.name}/>
         <div className="ware-pricename-grid">
-        <div className = "ware-pricename-name"><h4>{a.name}</h4></div>
-        <div className = "ware-pricename-price">{a.price}</div>
+        <div className = "ware-pricename-name" ><h4 style={{
+            marginBottom:"0"
+        }}>{a.name}</h4></div>
+        <Price className = "ware-pricename-price" price = {a.price}/>
         </div>
         <div>
         </div>
