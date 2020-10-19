@@ -157,7 +157,7 @@ const Auth = () => {
           />
         </div>
         
-        {counter >= 5 &&<div> <input
+        <div> <input
             type="checkbox"
             id="admin"
             name="admin"
@@ -165,7 +165,7 @@ const Auth = () => {
             onChange={adminHandler}
           />
           <label htmlFor="admin">I wanna be an Admin!</label>
-          </div>}
+          </div>
         
       <div className="auth-buttons">
         <button onClick={loginHandler} disabled={locked}>

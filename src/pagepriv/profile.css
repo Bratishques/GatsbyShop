@@ -11,10 +11,35 @@
     }
   
     .modal-wrapper {
+      
     display: table-cell;
     vertical-align: middle;
   }
+  @keyframes modal-open {
+    0% {
+      transform: scale(1);
+    }
+    1% {
+      transform: scale(0.5);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+
+    75% {
+      transform: scale(.95);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+
+  }
   .modal-container {
+    animation: modal-open 0.7s ease-in-out;
+    height: 500px;
+    overflow-y: scroll;
     background: #fff;
     width: 80vw;
     border-radius: 5px;
