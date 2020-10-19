@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
+import Price from "./price"
 
 const CartWare = props => {
   console.log(props)
@@ -24,11 +25,12 @@ const CartWare = props => {
           <h4 className={`cart-ware-name`}>{name}</h4> costs {price}
         </div>
         <div className={`cart-ware-buttons-div`}>
-          <button onClick={increaseAmount} disabled = {notInStock()}>+</button> {preCount()}
+          <button onClick={increaseAmount} disabled = {notInStock()}>+</button> { <Price  price = {preCount()}/>}
           <button onClick={decreaseAmount}>-</button>
         </div>
       </div>
       <div className={`cart-ware-count-flex`}>{count}</div>
+     
     </div>
   )
 }
