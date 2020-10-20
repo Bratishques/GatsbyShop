@@ -2,8 +2,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 50px;
-    justify-items: stretch;
+    justify-items: center;
     align-items: stretch;
+    margin-bottom: 50px;
 }
 
 .browse-top {

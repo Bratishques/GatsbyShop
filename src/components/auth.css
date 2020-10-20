@@ -18,7 +18,11 @@
 
 .auth-buttons {
     display: flex;
-    justify-content: space-between;
+}
+
+.auth-button {
+    padding: 8px 30px;
+    margin-right: 10px;
 }
 
 .auth-notifications {
@@ -40,7 +44,8 @@
 }
 
 .auth-input-pre {
-    width: 40px;
+    width: 50px;
+    padding: 0 0px;
     background-color: rgb(154, 93, 214);
     height: 100%;
     display: flex;

@@ -20,8 +20,12 @@ const SearchBar = props => {
   const searchChangeHandler = e => {
     setSearchValue(e.target.value)
   }
-  const blurHandler = () => {
-    setDropOpen(false)
+  const blurHandler = async () => {
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    sleep(100).then(() => {setDropOpen(false)})
   }
   const focusHandler = () => {
     setDropOpen(true)
@@ -64,7 +68,7 @@ const SearchBar = props => {
       }}
       ><img src={search} style={{
         marginBottom:"0",
-        width: "25px"
+        width: "26px"
       }}></img></div>
         <input
         style = {{
@@ -74,7 +78,9 @@ const SearchBar = props => {
           borderRadius: "0 7px 7px 0",
           borderTop: borderStyle,
           borderRight: borderStyle,
-          borderBottom: borderStyle
+          borderBottom: borderStyle,
+          display: "flex",
+          alignItems: "center"
         }
         }
           type="text"

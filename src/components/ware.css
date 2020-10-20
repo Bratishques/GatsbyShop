@@ -1,6 +1,6 @@
 .ware-image {
-    width: 200px !important;
-    height: 200px;
+    width: 250px !important;
+    height: 250px;
     object-fit: contain;
     margin: 0;
 }
@@ -14,26 +14,33 @@
     flex-direction: column;
     max-width: 250px;
     align-items: center;
-    padding: 20px 20px;
     justify-content: space-between;
+    box-shadow: 0px 5px 10px rgba(100, 100, 100, 0.185);
+    border-radius: 25px 25px 25px 25px;
 }
 
 .ware-pricename-grid {
-    margin-top: -55px;
-    height: 110px;
-    padding: 25px 25px;
-    font-size: 20px;
+    margin-top: -50px;
+    height: 120px;
+    padding: 35px 25px;
+    padding-bottom: 25px;
     display: flex;
     text-align: start;
     flex-direction: column;
-    background-color: rebeccapurple;
-    color: white;
+    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
     font-family: Roboto;
+    background-color: rgb(183, 121, 255);
+    border-radius: 0 0 25px 25px ;
 
+}
+
+.ware-pricename-price {
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .ware-buttons-wrap{
@@ -45,7 +52,7 @@
     justify-content: center;
     width: 150px;
     top: -40px;
-    box-shadow: 0px 1px 2px rgba(255, 255, 255, 0.185);
+
 }
 
 .ware-buttons {
@@ -57,6 +64,10 @@
 }
 
 @media(max-width: 700px) {
+
+    .ware-buttons-wrap{
+        width: 180px;
+    }
     .wareImage {
         width: 100px;
         height: 100px;
@@ -69,12 +80,11 @@
         flex-direction: column;
         width: auto;
         align-items: center;
-        padding: 20px 20px;
         justify-content: space-between;
     }
 
     .ware-pricename-grid {
-        background-color: rgb(172, 115, 230);
+
         display: flex;
 
         text-align: start;
@@ -86,8 +96,18 @@
 
 @media(max-width: 500px) {
 
+    .ware-pricename-name {
+        font-size:18px;
+    }
+
+
+    .ware-pricename-price {
+        font-size: 15px;
+        font-weight: 400;
+    }
+
     .ware-buttons-wrap{
-        width: 110px;
+        width: 130px;
     }
 
     .ware {
@@ -95,7 +115,6 @@
         flex-direction: column;
         width: auto;
         align-items: center;
-        padding: 20px 20px;
         justify-content: space-between;
     }
 

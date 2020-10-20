@@ -72,8 +72,7 @@ const Ware = ({ addItem, a, cart, increaseAmount, decreaseAmount}) => {
         <div className="ware-pricename-grid">
         <div className = "ware-pricename-name" ><span style={{
             marginBottom:"0",
-            fontSize: "15px",
-            fontStyle: "normal"
+            fontWeight: "300"
         }}>{a.name}</span></div>
         <Price className = "ware-pricename-price" price = {a.price}/>
         </div>

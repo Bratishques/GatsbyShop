@@ -78,7 +78,6 @@ input[type=text] {
 .category-flex {
     display: grid;
     grid-template-columns: 1fr 50px;
-    column-gap: 20px;
 }
 
 .dropdown {
@@ -101,7 +100,8 @@ input[type=text] {
 }
 
 .category-select {
-
+  height: 30px;
+  overflow: hidden;
   background-color: whitesmoke;
   padding: 5px 10px;
 
@@ -147,4 +147,13 @@ input[type=text] {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 80px;
+}
+
+@media(max-width: 700px) {
+  .input-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "img"
+                          "data"
+    ;
+  }
 }

@@ -11,7 +11,7 @@ import mailOutlined from '@iconify/icons-ant-design/mail-outlined';
 import bxsLock from '../images/lock.svg'
 
 const AuthInput = styled.input`
-padding: 10px 20px;
+padding: 15px 20px;
 border-radius: 10px;
 background-color: rebeccapurple;
 font-size: 16px;
@@ -20,11 +20,13 @@ font-family: Roboto;
 border: none;
 outline: 0;
 color: white;
-margin-left: -10px;
+margin-left: 0;
 width: auto !important;
+font-weight: 300;
 ::placeholder{
   color: white;
-  opacity: 0.8
+  opacity: 0.8;
+  font-weight: 300
 }
 
 `
@@ -154,7 +156,7 @@ const Auth = () => {
 
   return (
     <div>
-      <h2>Auth page</h2>
+      <h2>Authentication Page</h2>
       <div className="auth-forms">
         <div className="auth_form">
         <div className="auth-input-pre">
@@ -194,10 +196,12 @@ const Auth = () => {
           </div>
         
       <div className="auth-buttons">
-        <button onClick={loginHandler} disabled={locked}>
+        <button className="auth-button" onClick={loginHandler} disabled={locked}>
           Sign in
         </button>
-        <button onClick={registerHandler} disabled={locked}>
+        <button className="auth-button" onClick={registerHandler} disabled={locked} style={{
+          backgroundColor: "rgb(154, 93, 214)"
+        }}>
          Sign up
         </button>
         

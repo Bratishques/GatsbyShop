@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import config from "../config"
 import { useHttp } from "../hooks/http.hook"
+import "./itemPage.css"
 
 export const ItemPage = props => {
   const { request, loading } = useHttp()
@@ -20,13 +21,20 @@ export const ItemPage = props => {
   }, [])
 
   const itemData = () => {
-    return <>{ware.description}</>
+    return <div className="item-page-ware">
+    <img src={ware.image} className="item-page-ware-image"/>
+    <div>
+    <h4>{ware.name}</h4>
+    {ware.description}<br/>
+    Category: {ware.category.name}
+    </div>
+    </div>
   }
   return (
     <>
-      Hello! This a description of Ware that you have clicked on
       <br />
-      {itemData()}
+      <br />
+      {ware.name && itemData()}
     </>
   )
 }

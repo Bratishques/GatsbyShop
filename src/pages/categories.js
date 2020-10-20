@@ -8,7 +8,7 @@ import "./browse.css"
 
 
 
-const Categories = () => {
+const Categories = (props) => {
 
   const {baseUrl} = config
    const [options, setOptions] = useState([])
@@ -16,6 +16,7 @@ const Categories = () => {
    const [categories, setCategories] = useState([])
    const {request} = useHttp()
    const [loading,setLoading] = useState(true)
+   console.log(props.location.hash)
 
    const changeHandler = (e) => {
        if (options.indexOf(e.target.value) >= 0) {
@@ -39,6 +40,7 @@ const Categories = () => {
         </div>
     )
 }
+
 
    useEffect(() => {
        async function getWares(){

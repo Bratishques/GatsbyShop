@@ -14,13 +14,14 @@ const searchBarResult = props => {
       }}
     >
       {isWare ? (
-        <StyledLink to={`/app/ware/${id}`}>
+
         <button
           style={{
             border: "none",
             width: "100%",
           }}
         >
+                <StyledLink to={`/app/ware/${id}`}>
           <div
             className="serach-bar-dropper-ware-grid"
             style={{
@@ -51,10 +52,20 @@ const searchBarResult = props => {
               {props.name}
             </div>
           </div>
+          </StyledLink>
         </button>
-        </StyledLink>
-      ) : (
-        <div
+     
+      ) : ( null
+        
+      )}
+    </div>
+  )
+}
+
+export default searchBarResult
+
+
+{/* <div
           className="serach-bar-dropper-category"
           style={{
             height: "50px",
@@ -69,10 +80,4 @@ const searchBarResult = props => {
           >
             {props.name}
           </h4>
-        </div>
-      )}
-    </div>
-  )
-}
-
-export default searchBarResult
+        </div> */}
