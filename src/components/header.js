@@ -96,7 +96,7 @@ const Header = ({ siteTitle }) => {
   position: 'fixed',
   top: "0%",
   transition: "0.3s all",
-  zIndex: "200",
+  zIndex: "1000",
 
 }}>
 

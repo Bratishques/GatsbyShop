@@ -3,7 +3,7 @@ import config from "../config"
 import { useHttp } from "../hooks/http.hook"
 const { baseUrl } = config
 
-const AddCategoryFetcher = () => {
+const AddCategoryFetcher = (props) => {
   const { request } = useHttp()
   const [loading, setLoading] = useState(false)
   const [candidate, setCandidate] = useState("")
@@ -27,7 +27,12 @@ const AddCategoryFetcher = () => {
         message: message,
         done: true,
       })
+      if (props.categories) {
+        const newCats = props.categories.push(candidate)
+        props.setCategories([...newCats])
+      }
       setLoading(false)
+     
     } catch (e) {
       console.log(e)
     }
@@ -35,6 +40,7 @@ const AddCategoryFetcher = () => {
   const inputHandler = e => {
     setCandidate(e.target.value)
   }
+
 
   return (
     <div>

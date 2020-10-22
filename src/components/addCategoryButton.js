@@ -7,7 +7,7 @@ const AddCategoryButton = (props) => {
     }
 
     return (
-        <button onClick = {clickHandler}>+</button>
+        <button onClick = {clickHandler}>{categoryAdder ? `-` : `+`}</button>
     )
 }
 

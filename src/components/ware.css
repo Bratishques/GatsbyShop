@@ -20,9 +20,11 @@
 }
 
 .ware-pricename-grid {
+    position: relative;
+    z-index: 200;
     margin-top: -50px;
     height: 120px;
-    padding: 35px 25px;
+    padding: 25px 25px;
     padding-bottom: 25px;
     display: flex;
     text-align: start;
@@ -52,6 +54,7 @@
     justify-content: center;
     width: 150px;
     top: -40px;
+    z-index: 201;
 
 }
 

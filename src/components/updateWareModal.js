@@ -3,6 +3,7 @@ import AddWareImage from "./addWareImage"
 import AddWareInput from "./addWareInput"
 import CategoryInput from "./categoryInput"
 import config from "../config"
+import ModalWindow from "./modalWindow"
 
 export const UpdateWareModal = props => {
   const {
@@ -154,9 +155,7 @@ export const UpdateWareModal = props => {
 
   if (isUpdating) {
     return (
-      <div className="modal">
-        <div className="modal-wrapper">
-          <div className="modal-container">
+      <ModalWindow>
             <div className={`top-modal-container`}>
               <h4 className={`modal-top`}>Choose an Item to Add</h4>
               <button
@@ -211,10 +210,8 @@ export const UpdateWareModal = props => {
                   setForm={setForm}
                 />
               </div>
-            </div>
-          </div>
-        </div>
       </div>
+      </ModalWindow>
     )
   }
   return null

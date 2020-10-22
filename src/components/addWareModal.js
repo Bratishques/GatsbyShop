@@ -3,6 +3,7 @@ import AddWareImage from "./addWareImage"
 import AddWareInput from "./addWareInput"
 import CategoryInput from "./categoryInput"
 import config from "../config"
+import ModalWindow from "./modalWindow"
 
 export const AddWareModal = props => {
   const {baseUrl} = config
@@ -102,9 +103,7 @@ export const AddWareModal = props => {
 
   if (isAdding) {
     return (
-      <div className="modal">
-        <div className="modal-wrapper">
-          <div className="modal-container">
+      <ModalWindow>
             <div className={`top-modal-container`}>
               <h4 className={`modal-top`}>Choose an Item to Add</h4>
               <button className={`closeModal`} onClick={closeWindow}>
@@ -155,10 +154,9 @@ export const AddWareModal = props => {
                   setForm={setForm}
                 />
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </div>
+              </ModalWindow>
+
     )
   }
   return null
