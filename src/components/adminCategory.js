@@ -11,7 +11,7 @@ const AdminCategory = props => {
   const { request } = useHttp()
 
   const inputHandler = e => {
-    setUpdatingValue(updatedValue)
+    setUpdatingValue(e.target.value)
   }
   const clickHandler = () => {
     setIsUpdating(true)
@@ -25,7 +25,7 @@ const AdminCategory = props => {
         })
         console.log(data)
         const newCategories = categories.map(a => {
-          if (a=== name) {
+          if (a === name) {
             a = updatedValue
           }
         })
@@ -45,14 +45,13 @@ const AdminCategory = props => {
       console.log(data)
       const newCategories = categories.filter(a => {
         if (a === name) {
-            
-            return
+          return
         }
         return a
-    })
-    setCategories([...newCategories])
+      })
+      setCategories([...newCategories])
     } catch (e) {
-        console.log(e)
+      console.log(e)
     }
   }
 
@@ -76,7 +75,7 @@ const AdminCategory = props => {
       ) : (
         <button onClick={updateHandler}>Finish</button>
       )}
-      <button onClick = {deleteHandler}>Delete</button>
+      <button onClick={deleteHandler}>Delete</button>
     </div>
   )
 }
