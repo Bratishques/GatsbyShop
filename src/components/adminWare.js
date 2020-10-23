@@ -63,7 +63,8 @@ const AdminWare = props => {
           backgroundColor: "none",
           marginTop: "-45px",
           position: "relative",
-          top: "-100px"
+          top: "-100px",
+          zIndex: "220"
         }}>
           {" "}
           <button onClick={openModal} disabled={loading}>
